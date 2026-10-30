@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AD EVALUATOR PRO — Member Portal</title>
+  <meta name="title" content="AD EVALUATOR PRO — Member Portal">
+  <meta name="description" content="Official Member Training Portal for AD EVALUATOR PRO. Access all curriculum courses, ad evaluation blueprint, and tools.">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://funnel-sandy.vercel.app/portal">
+  <meta property="og:title" content="AD EVALUATOR PRO — Member Portal">
+  <meta property="og:description" content="Official Member Training Portal for AD EVALUATOR PRO. Access all curriculum courses, ad evaluation blueprint, and tools.">
+  <meta property="og:image" content="https://funnel-sandy.vercel.app/portal/ad-evaluator-pro-icon.png">
+  <meta property="og:image:secure_url" content="https://funnel-sandy.vercel.app/portal/ad-evaluator-pro-icon.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="AD EVALUATOR PRO Official Logo">
+  <meta property="og:site_name" content="AD EVALUATOR PRO">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://funnel-sandy.vercel.app/portal">
+  <meta name="twitter:title" content="AD EVALUATOR PRO — Member Portal">
+  <meta name="twitter:description" content="Official Member Training Portal for AD EVALUATOR PRO. Access all curriculum courses, ad evaluation blueprint, and tools.">
+  <meta name="twitter:image" content="https://funnel-sandy.vercel.app/portal/ad-evaluator-pro-icon.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              500: '#1877F2',
+              600: '#1464cc',
+              700: '#0f4c9c',
+            },
+            mk: {
+              base: '#0B0C10',
+              surface: '#12141D',
+              card: '#171923',
+              cardHover: '#1D202C',
+              border: '#232738',
+              borderHover: '#32374E',
+              subtext: '#94A3B8',
+              muted: '#64748B',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', '-apple-system', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0B0C10;
+      color: #F1F5F9;
+    }
+    .scrollbar-mk::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .scrollbar-mk::-webkit-scrollbar-track {
+      background: #0E1017;
+    }
+    .scrollbar-mk::-webkit-scrollbar-thumb {
+      background: #232738;
+      border-radius: 9999px;
+    }
+    .scrollbar-mk::-webkit-scrollbar-thumb:hover {
+      background: #3B4252;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.28; transform: scale(1.05); }
+    }
+    .glow-bg {
+      animation: pulseGlow 5s ease-in-out infinite;
+    }
+    .hero-banner {
+      background: radial-gradient(circle at 80% 20%, rgba(24, 119, 242, 0.18) 0%, rgba(18, 20, 29, 0.95) 70%), #12141D;
+    }
+  </style>
+</head>
+<body class="bg-[#0B0C10] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#1877F2] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. LOGIN / ACCESS VERIFICATION OVERLAY SCREEN -->
+  <!-- ========================================== -->
+  <div id="loginScreen" class="fixed inset-0 z-[100] bg-[#07080B] flex items-center justify-center p-4">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/15 rounded-full blur-[140px] pointer-events-none glow-bg"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none glow-bg"></div>
+
+    <div class="relative w-full max-w-md bg-[#12141D] border border-[#232738] rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-6">
+      <img src="fb-logo.png" alt="AD EVALUATOR PRO Logo" class="mx-auto w-16 h-16 rounded-2xl shadow-xl shadow-blue-500/25 object-contain">
+
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          Official VIP Member Access
+        </div>
+        <h1 class="text-2xl font-black text-white tracking-tight font-display">AD EVALUATOR PRO</h1>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Enter the email address you used during your order to verify your VIP license and load your portal.
+        </p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4 text-left">
+        <div class="space-y-1.5">
+          <label for="userEmailInput" class="text-xs font-bold text-slate-300 flex items-center justify-between">
+            <span>Purchase Email</span>
+            <span class="text-[10px] text-blue-400 font-normal">Instant license match</span>
+          </label>
+          <div class="relative">
+            <input 
+              type="email" 
+              id="userEmailInput" 
+              required
+              placeholder="e.g. yourname@example.com"
+              class="w-full bg-[#0E1017] border border-[#232738] focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition"
+            >
+            <span class="absolute right-3.5 top-3.5 text-slate-500 text-xs">✉</span>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          id="loginBtn"
+          class="w-full bg-[#1877F2] hover:bg-[#1464cc] text-white font-extrabold text-sm py-3.5 px-6 rounded-xl shadow-lg shadow-blue-600/30 transition duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>Verify License & Enter Portal</span>
+          <span class="text-base">→</span>
+        </button>
+      </form>
+
+      <div id="loginLoadingState" class="hidden space-y-4 pt-2">
+        <div class="flex items-center justify-center gap-3">
+          <svg class="animate-spin h-6 w-6 text-blue-500" viewBox="0 0 24 24" fill="none">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          <span id="loginLoadingText" class="text-xs font-bold text-slate-300">Connecting to secure verification server...</span>
+        </div>
+        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div id="loginProgressBar" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-full w-0 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-[#232738] flex items-center justify-center gap-4 text-[11px] text-slate-500">
+        <span class="flex items-center gap-1">🔒 256-Bit SSL Encrypted</span>
+        <span>•</span>
+        <span class="flex items-center gap-1">⚡ Instant License Sync</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 2. WELCOME / CONGRATULATIONS MODAL -->
+  <!-- ========================================== -->
+  <div id="welcomeModal" class="hidden fixed inset-0 z-[90] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-lg bg-[#12141D] border border-[#232738] rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-6">
+      
+      <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-500 text-slate-950 flex items-center justify-center text-3xl font-black shadow-2xl shadow-yellow-500/20">
+        🏆
+      </div>
+
+      <div class="space-y-2">
+        <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+          VIP Access Activated
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
+          Congratulations & Welcome!
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          You have officially secured your lifetime access to <strong class="text-white">AD EVALUATOR PRO</strong>. Your training courses (<strong class="text-blue-400">Ads Profits</strong>, <strong class="text-cyan-400">Millionaire Mindset</strong>, and <strong class="text-emerald-400">Recover Your Investment</strong>) are fully unlocked below.
+        </p>
+      </div>
+
+      <div class="bg-[#0E1017] border border-[#232738] rounded-2xl p-4 text-left space-y-3">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Your Next Steps:</div>
+        
+        <div class="flex items-start gap-3 text-xs text-slate-200">
+          <div class="w-5 h-5 rounded-full bg-blue-600/20 text-blue-400 font-extrabold flex items-center justify-center flex-shrink-0 text-[10px]">1</div>
+          <div><strong class="text-white">Ads Profits (7 Modules):</strong> Watch the video lessons and claim your $20 PayPal bonus in Module 1.</div>
+        </div>
+
+        <div class="flex items-start gap-3 text-xs text-slate-200">
+          <div class="w-5 h-5 rounded-full bg-cyan-600/20 text-cyan-400 font-extrabold flex items-center justify-center flex-shrink-0 text-[10px]">2</div>
+          <div><strong class="text-white">Millionaire Mindset (12 Videos):</strong> Master the Code of Prosperity to align your daily operational focus.</div>
+        </div>
+
+        <div class="flex items-start gap-3 text-xs text-slate-200">
+          <div class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-extrabold flex items-center justify-center flex-shrink-0 text-[10px]">3</div>
+          <div><strong class="text-white">Recover Your Investment (4 Modules):</strong> Download the 2 official PDF guides and deploy Methods 1, 2, and 3.</div>
+        </div>
+      </div>
+
+      <button 
+        onclick="closeWelcomeModal()"
+        class="w-full bg-[#1877F2] hover:bg-[#1464cc] text-white font-extrabold text-sm py-4 px-6 rounded-xl shadow-lg shadow-blue-600/30 transition duration-200 cursor-pointer flex items-center justify-center gap-2"
+      >
+        <span>Enter Academy & Begin Course</span>
+        <span>→</span>
+      </button>
+
+      <p class="text-[11px] text-slate-500">
+        You can revisit any lesson or tool at any time. Your progress is saved automatically.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 3. TOP NAVIGATION BAR (HEADER - CLEAN) -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-[#12141D]/90 backdrop-blur-md border-b border-[#232738] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Title -->
+      <div class="flex items-center gap-3">
+        <a href="#" onclick="showView('dashboard'); return false;" class="flex items-center gap-3 group">
+          <img src="fb-logo.png" alt="AD EVALUATOR PRO Logo" class="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
+          <div class="flex flex-col">
+            <span class="text-sm font-black text-white tracking-tight font-display">
+              AD EVALUATOR PRO
+            </span>
+            <span class="text-[10px] text-slate-400 font-medium">Official Rater Academy</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Tabs & User Profile -->
+      <div class="flex items-center gap-3">
+        
+        <nav class="hidden lg:flex items-center gap-1">
+          <button onclick="showView('dashboard')" id="navDashboard" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#171923] border border-[#232738] hover:text-white transition cursor-pointer">
+            Modules
+          </button>
+          <button onclick="showView('classroom')" id="navClassroom" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#171923] transition cursor-pointer">
+            Classroom
+          </button>
+          <button onclick="showView('simulator')" id="navSimulator" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 border border-blue-500/20 transition cursor-pointer flex items-center gap-1">
+            <span>⚡</span>
+            <span>Secret Tools</span>
+          </button>
+          <button onclick="showView('community')" id="navCommunity" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#171923] transition cursor-pointer">
+            Community
+          </button>
+          <button onclick="showView('calculator')" id="navCalculator" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#171923] transition cursor-pointer">
+            Calculator
+          </button>
+          <button onclick="showView('certificate')" id="navCertificate" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#171923] transition cursor-pointer">
+            Certificate
+          </button>
+        </nav>
+
+        <!-- Global Progress Badge -->
+        <div class="hidden sm:flex items-center gap-2 pl-2 border-l border-[#232738]">
+          <div class="flex flex-col text-right">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Progress</span>
+            <span id="headerProgressPct" class="text-xs font-black text-emerald-400">10% Done</span>
+          </div>
+          <div class="w-8 h-8 rounded-full border-2 border-emerald-500/30 flex items-center justify-center text-[10px] font-black text-emerald-400 bg-emerald-500/10" id="headerProgressCountBadge">
+            2/19
+          </div>
+        </div>
+
+        <!-- Support Trigger -->
+        <button 
+          onclick="toggleSupportModal(true)" 
+          class="bg-[#171923] hover:bg-[#232738] border border-[#232738] text-slate-300 hover:text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+          title="VIP Concierge Support"
+        >
+          <span>💬</span>
+          <span class="hidden sm:inline">Support</span>
+        </button>
+
+        <!-- User Menu Dropdown Button -->
+        <div class="relative">
+          <button 
+            onclick="toggleUserDropdown()" 
+            class="flex items-center gap-2 p-1 pl-2 bg-[#0E1017] hover:bg-[#171923] border border-[#232738] rounded-full transition cursor-pointer"
+          >
+            <span id="userEmailDisplay" class="text-xs font-bold text-slate-300 max-w-[120px] truncate hidden sm:inline">
+              member@vip.com
+            </span>
+            <div id="userAvatarLetter" class="w-7 h-7 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-extrabold text-xs flex items-center justify-center shadow">
+              M
+            </div>
+          </button>
+
+          <!-- Dropdown Popup -->
+          <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-[#12141D] border border-[#232738] rounded-2xl shadow-2xl py-2 z-50 text-xs">
+            <div class="px-4 py-2 border-b border-[#232738]">
+              <div class="font-bold text-white">Active License</div>
+              <div id="dropdownEmail" class="text-[11px] text-slate-400 truncate">member@vip.com</div>
+              <div class="mt-1 inline-block text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">
+                ✓ Verified VIP Member
+              </div>
+            </div>
+            
+            <a href="#" onclick="showView('certificate'); toggleUserDropdown(); return false;" class="block px-4 py-2 text-slate-300 hover:bg-[#171923] hover:text-white">
+              📜 Official Certificate
+            </a>
+            <a href="#" onclick="showView('calculator'); toggleUserDropdown(); return false;" class="block px-4 py-2 text-slate-300 hover:bg-[#171923] hover:text-white">
+              💵 USD Earnings Estimator
+            </a>
+            <a href="#" onclick="toggleSupportModal(true); toggleUserDropdown(); return false;" class="block px-4 py-2 text-slate-300 hover:bg-[#171923] hover:text-white">
+              💬 Priority Concierge Desk
+            </a>
+            <a href="#" onclick="openRefundAuditModal(); toggleUserDropdown(); return false;" class="block px-4 py-2 text-slate-400 hover:bg-[#171923] hover:text-rose-400 text-[11px]">
+              ⚖️ Order Audit & Guarantee
+            </a>
+
+            <div class="border-t border-[#232738] mt-1 pt-1">
+              <button onclick="logoutUser()" class="w-full text-left px-4 py-2 text-rose-400 hover:bg-rose-500/10 font-bold cursor-pointer">
+                Sign out / Switch Email
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Sub-Navigation Row -->
+    <div class="flex lg:hidden overflow-x-auto px-4 py-2 bg-[#0E1017] border-t border-[#232738] gap-2 scrollbar-none text-xs">
+      <button onclick="showView('dashboard')" class="whitespace-nowrap px-3 py-1 rounded-lg font-bold text-slate-300 hover:text-white bg-[#171923] border border-[#232738]">
+        Modules
+      </button>
+      <button onclick="showView('classroom')" class="whitespace-nowrap px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white">
+        Classroom
+      </button>
+      <button onclick="showView('simulator')" class="whitespace-nowrap px-3 py-1 rounded-lg font-bold text-blue-400 bg-blue-500/10 border border-blue-500/20">
+        ⚡ Secret Tools
+      </button>
+      <button onclick="showView('community')" class="whitespace-nowrap px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white">
+        Community
+      </button>
+      <button onclick="showView('calculator')" class="whitespace-nowrap px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white">
+        Calculator
+      </button>
+      <button onclick="showView('certificate')" class="whitespace-nowrap px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white">
+        Certificate
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ========================================== -->
+  <!-- 4. MAIN APPLICATION CONTAINER -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+
+    <!-- ========================================== -->
+    <!-- VIEW A: DASHBOARD / COURSE MODULES SHELVES -->
+    <!-- ========================================== -->
+    <section id="viewDashboard" class="space-y-10">
+      
+      <!-- Hero Banner -->
+      <div class="hero-banner border border-[#232738] rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div class="absolute -right-12 -top-12 w-80 h-80 bg-blue-600/15 rounded-full blur-[90px] pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            Member Training Academy
+          </div>
+
+          <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight font-display leading-tight">
+            The Complete Program: From Mindset to Ads Profits
+          </h1>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Welcome to your master training hub. Access all curriculum courses below: <strong class="text-white">Ads Profits</strong> (7 Modules · 19 Videos), <strong class="text-cyan-400">Millionaire Mindset</strong> (12 Videos), and <strong class="text-emerald-400">Recover Your Investment</strong> (4 Modules · 2 PDF E-Books · 4 Videos).
+          </p>
+
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button 
+              onclick="openCourseInClassroom('fb_profits', 'fbp_l1');" 
+              class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
+            >
+              <span>▶ Start Ads Profits</span>
+              <span class="text-xs opacity-75">(Claim $20 PayPal)</span>
+            </button>
+
+            <button 
+              onclick="openCourseInClassroom('recover_investment', 'ri_l1');" 
+              class="bg-[#171923] hover:bg-[#232738] text-white border border-[#232738] font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition flex items-center gap-2 cursor-pointer"
+            >
+              <span>⏱️ Recover Your Investment</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div class="bg-[#12141D] border border-[#232738] rounded-2xl p-4 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-lg">
+            📚
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Courses</div>
+            <div class="text-base sm:text-lg font-black text-white">5 Master Programs</div>
+          </div>
+        </div>
+
+        <div class="bg-[#12141D] border border-[#232738] rounded-2xl p-4 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+            🎬
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Video Lessons</div>
+            <div class="text-base sm:text-lg font-black text-white">42+ Video Lessons</div>
+          </div>
+        </div>
+
+        <div class="bg-[#12141D] border border-[#232738] rounded-2xl p-4 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg">
+            📄
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">PDF Materials</div>
+            <div class="text-base sm:text-lg font-black text-emerald-400">2 Official E-Books</div>
+          </div>
+        </div>
+
+        <div class="bg-[#12141D] border border-[#232738] rounded-2xl p-4 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-lg">
+            🛡️
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Member Status</div>
+            <div class="text-base sm:text-lg font-black text-white">VIP Lifetime</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      
+      <!-- ========================================== -->
+      <!-- VIP LIFETIME ACCESS & MONTHLY UPDATES HERO BANNER -->
+      <!-- ========================================== -->
+      <div class="relative bg-gradient-to-r from-purple-950/70 via-[#12141D] to-[#1877F2]/25 border-2 border-purple-500/40 rounded-3xl p-6 sm:p-8 overflow-hidden shadow-2xl backdrop-blur-sm group">
+        <div class="absolute -right-16 -top-16 w-72 h-72 bg-purple-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-3 max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              VIP Lifetime Access Activated
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight font-display flex items-center gap-2">
+              <span>Lifetime Access</span>
+              <span class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-0.5 rounded-full font-sans font-bold">ProfitUp VIP</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+              Congratulations, you now have your lifetime access to ProfitUp activated with the email you purchased. Enjoy a lifetime of services from our ProfitUp platform and make a lot of money.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-semibold text-purple-300 pt-1">
+              <span>🔄 <strong>Monthly Updates Guaranteed:</strong> Every month, your portal is updated with new training materials and fresh chances to make extra income online.</span>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
+            <button 
+              onclick="openCourseInClassroom('lifetime_access');" 
+              class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs px-5 py-3 rounded-xl shadow-lg shadow-purple-500/25 transition transform hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+            >
+              <span>🌟 View VIP Access Details</span>
+            </button>
+            <button 
+              onclick="openCourseInClassroom('increase_profits_x3');" 
+              class="bg-[#1e2230] hover:bg-[#282d3f] border border-[#2e3449] text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+            >
+              <span>⚡ Increase Profits X3 (7 Contents)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHELF 1: COMPLETE PROGRAM -->
+      <!-- ========================================== -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg sm:text-xl font-black text-white tracking-tight font-display">Complete Program</h2>
+            <span class="text-xs text-rose-400 font-bold hover:underline cursor-pointer" onclick="openCourseInClassroom('fb_profits', 'fbp_l1');">View all →</span>
+          </div>
+          <span class="text-[11px] font-bold text-slate-400 hidden sm:inline">6 Core Modules</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5" id="shelfCompleteProgram">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- SHELF 2: WELCOME AND SUPPORT -->
+      <!-- ========================================== -->
+      <div class="space-y-4 pt-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg sm:text-xl font-black text-white tracking-tight font-display">Welcome and Support</h2>
+            <span class="text-xs text-rose-400 font-bold hover:underline cursor-pointer" onclick="openCourseInClassroom('recover_investment', 'ri_l2');">View all →</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5" id="shelfWelcomeSupport">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- SHELF 3: SECRET TOOLS -->
+      <!-- ========================================== -->
+      <div class="space-y-4 pt-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg sm:text-xl font-black text-white tracking-tight font-display">Secret Tools</h2>
+            <span class="text-xs text-rose-400 font-bold hover:underline cursor-pointer" onclick="showView('simulator')">View all →</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5" id="shelfSecretTools">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Quick Action Cards Section -->
+      <div class="space-y-3 pt-6 border-t border-[#232738]">
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Quick Access Utilities</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div onclick="showView('simulator')" class="bg-[#12141D] hover:bg-[#171923] border border-[#232738] hover:border-blue-500/40 rounded-2xl p-4 transition duration-200 cursor-pointer flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl">
+              ⚡
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Secret Tools Sandbox</div>
+              <div class="text-[10px] text-slate-400">Live creative assessment sandbox</div>
+            </div>
+          </div>
+
+          <div onclick="showView('calculator')" class="bg-[#12141D] hover:bg-[#171923] border border-[#232738] hover:border-indigo-500/40 rounded-2xl p-4 transition duration-200 cursor-pointer flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+              💵
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Earnings Calculator</div>
+              <div class="text-[10px] text-slate-400">Project your weekly & monthly payouts</div>
+            </div>
+          </div>
+
+          <div onclick="showView('certificate')" class="bg-[#12141D] hover:bg-[#171923] border border-[#232738] hover:border-emerald-500/40 rounded-2xl p-4 transition duration-200 cursor-pointer flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+              📜
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Official Certificate</div>
+              <div class="text-[10px] text-slate-400">Generate verified completion credential</div>
+            </div>
+          </div>
+
+          <div onclick="toggleSupportModal(true)" class="bg-[#12141D] hover:bg-[#171923] border border-[#232738] hover:border-amber-500/40 rounded-2xl p-4 transition duration-200 cursor-pointer flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+              💬
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">VIP Concierge Support</div>
+              <div class="text-[10px] text-slate-400">Direct priority tutor desk</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW B: CLASSROOM / VIDEO PLAYER & SIDEBAR ACCORDION -->
+    <!-- ========================================== -->
+    <section id="viewClassroom" class="hidden space-y-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+        
+        <!-- Left: Player & Details (Col Span 2) -->
+        <div class="lg:col-span-2 space-y-6">
+          
+          <div class="bg-[#12141D] border border-[#232738] rounded-3xl overflow-hidden shadow-2xl relative">
+            
+            <!-- Video / Media Container 16:9 -->
+            <div class="relative aspect-video bg-[#07080B] flex items-center justify-center group overflow-hidden" id="playerContainer">
+              <!-- Injected via JavaScript (YouTube iframe, PDF Download Card, or Support Display) -->
+            </div>
+
+            <!-- Lesson Header & Actions -->
+            <div class="p-5 sm:p-6 space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div id="lessonBreadcrumb" class="text-xs font-bold text-blue-400 mb-1">
+                    Ads Profits · Module 1 - First Steps
+                  </div>
+                  <h1 id="lessonTitle" class="text-lg sm:text-2xl font-black text-white font-display">
+                    Fill out this form and earn $35
+                  </h1>
+                </div>
+
+                <!-- Complete Button -->
+                <button 
+                  id="completeLessonBtn"
+                  onclick="toggleCurrentLessonCompletion()"
+                  class="bg-[#171923] hover:bg-[#232738] text-slate-300 border border-[#232738] font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2 self-start sm:self-auto cursor-pointer"
+                >
+                  <span id="completeCheckIcon">⚪</span>
+                  <span id="completeBtnText">Mark as Completed</span>
+                </button>
+              </div>
+
+              <!-- Rating Widget -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#232738] text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-400 font-medium">Rate this lesson:</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-sm" id="starRating">
+                    <button onclick="rateLesson(1)" class="hover:scale-125 transition cursor-pointer">★</button>
+                    <button onclick="rateLesson(2)" class="hover:scale-125 transition cursor-pointer">★</button>
+                    <button onclick="rateLesson(3)" class="hover:scale-125 transition cursor-pointer">★</button>
+                    <button onclick="rateLesson(4)" class="hover:scale-125 transition cursor-pointer">★</button>
+                    <button onclick="rateLesson(5)" class="hover:scale-125 transition cursor-pointer">★</button>
+                  </div>
+                  <span id="ratingFeedback" class="text-[11px] text-slate-500 font-medium">(5.0 · 342 ratings)</span>
+                </div>
+
+                <!-- Next & Previous Lesson Navigation -->
+                <div class="flex items-center gap-2">
+                  <button 
+                    onclick="navigateLesson(-1)" 
+                    id="prevLessonBtn"
+                    class="bg-[#0E1017] hover:bg-[#171923] border border-[#232738] text-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold transition disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    ← Previous
+                  </button>
+                  <button 
+                    onclick="navigateLesson(1)" 
+                    id="nextLessonBtn"
+                    class="bg-[#1877F2] hover:bg-[#1464cc] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    Next Lesson →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Lesson Tabs (Overview / Downloads / Comments) -->
+          <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-5 sm:p-6 space-y-6 shadow-xl">
+            
+            <div class="flex border-b border-[#232738] gap-6 text-xs font-bold">
+              <button 
+                onclick="switchLessonTab('overview')" 
+                id="tabBtnOverview"
+                class="pb-3 border-b-2 border-blue-500 text-white transition cursor-pointer"
+              >
+                Overview & Instructions
+              </button>
+              <button 
+                onclick="switchLessonTab('materials')" 
+                id="tabBtnMaterials"
+                class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-white transition cursor-pointer"
+              >
+                Official PDF E-Books & Downloads (2)
+              </button>
+              <button 
+                onclick="switchLessonTab('comments')" 
+                id="tabBtnComments"
+                class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-white transition cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Q&A & Discussion</span>
+                <span class="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.2 rounded-full font-bold">18</span>
+              </button>
+            </div>
+
+            <!-- Tab 1: Overview -->
+            <div id="tabContentOverview" class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <div id="lessonDescription">
+                <!-- Injected via JS -->
+              </div>
+
+              <div class="bg-[#0E1017] border border-[#232738] rounded-2xl p-4 space-y-2">
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>🎯</span>
+                  <span>Lesson Milestones:</span>
+                </div>
+                <ul id="lessonCheckpoints" class="space-y-1.5 text-xs text-slate-300">
+                  <!-- Injected via JS -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Tab 2: Materials -->
+            <div id="tabContentMaterials" class="hidden space-y-3">
+              <div class="text-xs text-slate-400 mb-2">Download official PDF e-books and operational worksheets:</div>
+
+              <div class="space-y-2">
+                <div class="bg-[#0E1017] border border-blue-500/30 rounded-xl p-4 flex items-center justify-between transition">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl">📘</span>
+                    <div>
+                      <div class="text-xs font-bold text-white">The_Secret_of_Millionaires.pdf</div>
+                      <div class="text-[10px] text-slate-400">The Code of Prosperity & Psychological Disciplines (Official E-Book)</div>
+                    </div>
+                  </div>
+                  <a href="downloads/The_Secret_of_Millionaires.pdf" download class="text-xs font-bold text-blue-400 hover:text-blue-300 bg-blue-500/10 px-4 py-2 rounded-lg border border-blue-500/20 cursor-pointer">
+                    Download PDF
+                  </a>
+                </div>
+
+                <div class="bg-[#0E1017] border border-emerald-500/30 rounded-xl p-4 flex items-center justify-between transition">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl">📗</span>
+                    <div>
+                      <div class="text-xs font-bold text-white">15_Best_Sources_Of_Income.pdf</div>
+                      <div class="text-[10px] text-slate-400">Comprehensive Remote Monetization Guide (26 Pages)</div>
+                    </div>
+                  </div>
+                  <a href="downloads/15_Best_Sources_Of_Income.pdf" download class="text-xs font-bold text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 px-4 py-2 rounded-lg border border-emerald-500/20 cursor-pointer">
+                    Download PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Comments -->
+            <div id="tabContentComments" class="hidden space-y-5">
+              <div class="bg-[#0E1017] border border-[#232738] rounded-2xl p-4 space-y-3">
+                <div class="text-xs font-bold text-white flex items-center gap-2">
+                  <span>💬</span>
+                  <span>Post a question or comment for the tutor desk:</span>
+                </div>
+                <textarea 
+                  id="newCommentText" 
+                  rows="2" 
+                  placeholder="Type your question, clarification, or feedback regarding this lesson..."
+                  class="w-full bg-[#12141D] border border-[#232738] focus:border-blue-500 rounded-xl p-3 text-xs text-white placeholder-slate-500 outline-none transition"
+                ></textarea>
+                <div class="flex justify-between items-center pt-1">
+                  <span class="text-[10px] text-slate-500">Tutors typically respond within 2 hours.</span>
+                  <button 
+                    onclick="submitComment()" 
+                    class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-4 py-2 rounded-xl transition cursor-pointer"
+                  >
+                    Submit Comment
+                  </button>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  Recent Discussions (18)
+                </div>
+
+                <div id="commentsList" class="space-y-3">
+                  <div class="bg-[#0E1017] border border-[#232738] rounded-2xl p-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+                          SJ
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold text-white flex items-center gap-1.5">
+                            Sarah Jenkins
+                            <span class="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.2 rounded font-bold">Verified Member</span>
+                          </div>
+                          <div class="text-[10px] text-slate-500">2 hours ago</div>
+                        </div>
+                      </div>
+                      <span class="text-[10px] text-slate-500">★ ★ ★ ★ ★</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed pl-9">
+                      Downloaded the 15 Best Sources of Income PDF and watched Method 1 of Recover Your Investment. Generated my first payout on UserTesting!
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right: Course Curriculum Sidebar Accordion (Col Span 1) -->
+        <div class="space-y-4">
+          
+          <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-5 space-y-4 shadow-xl">
+            
+            <!-- Course Selector Header -->
+            <div class="space-y-2 pb-3 border-b border-[#232738]">
+              <div class="flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase">
+                <span>Select Course:</span>
+                <span id="sidebarCourseBadge" class="text-blue-400 font-mono">COURSE 02</span>
+              </div>
+              <select 
+                id="courseSelector" 
+                onchange="switchCourse(this.value)" 
+                class="w-full bg-[#0E1017] border border-[#232738] focus:border-blue-500 rounded-xl px-3 py-2 text-xs font-bold text-white outline-none cursor-pointer"
+              >
+                <option value="fb_profits" selected>Ads Profits (7 Modules · 19 Videos)</option>
+                <option value="increase_profits_x3">Increase Your Profits X3 (7 contents · Complet Program)</option>
+                <option value="mindset">Millionaire Mindset: The Code of Prosperity (12 Videos)</option>
+                <option value="recover_investment">Recover Your Investment (4 Modules · 2 PDFs · 4 Videos)</option>
+                <option value="lifetime_access">Lifetime Access (VIP Pass & Monthly Updates)</option>
+                <option value="complete_program">Program Complete (Foundations & Setup)</option>
+              </select>
+            </div>
+
+            <!-- Modules Accordion Container -->
+            <div id="curriculumAccordion" class="space-y-3 max-h-[580px] overflow-y-auto scrollbar-mk pr-1">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Quick Support Help Card -->
+          <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-5 space-y-3">
+            <div class="flex items-center gap-2 text-xs font-bold text-white">
+              <span>🎧</span>
+              <span>Student Support Care</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Email our support desk directly at <strong class="text-blue-400">newtrapboostsupport@gmail.com</strong>.
+            </p>
+            <a 
+              href="mailto:newtrapboostsupport@gmail.com"
+              class="w-full bg-[#171923] hover:bg-[#232738] text-white text-xs font-bold py-2.5 rounded-xl border border-[#232738] transition cursor-pointer flex items-center justify-center gap-1.5"
+            >
+              ✉️ Email Support Desk
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW C: SIMULATOR (SECRET TOOLS) -->
+    <!-- ========================================== -->
+    <section id="viewSimulator" class="hidden space-y-6">
+      
+      <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            Integrated Sandbox Tool
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight font-display">
+            Secret Tools — Live Assessment Sandbox
+          </h2>
+          <p class="text-xs text-slate-400">
+            Rate simulated sponsored campaigns and video tasks in real time to train your scoring precision.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button 
+            onclick="document.getElementById('simulatorIframe').src = document.getElementById('simulatorIframe').src;" 
+            class="bg-[#171923] hover:bg-[#232738] text-slate-300 border border-[#232738] text-xs font-bold px-3 py-2 rounded-xl transition flex items-center gap-1.5 cursor-pointer"
+          >
+            🔄 Sync Simulator
+          </button>
+          <a 
+            href="/secret-tasks/#app" 
+            target="_blank" 
+            class="bg-[#1877F2] hover:bg-[#1464cc] text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md shadow-blue-600/30 transition flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>Open in Fullscreen</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-[#07080B] border border-[#232738] rounded-3xl overflow-hidden shadow-2xl relative h-[780px] flex items-center justify-center">
+        <iframe 
+          id="simulatorIframe"
+          src="/secret-tasks/#app" 
+          title="Secret Tasks App" 
+          class="w-full h-full border-0 rounded-2xl"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW D: COMMUNITY FEED -->
+    <!-- ========================================== -->
+    <section id="viewCommunity" class="hidden space-y-6">
+      
+      <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            Official Member Lounge
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight font-display">
+            Student Community & Verified Discussions
+          </h2>
+          <p class="text-xs text-slate-400">
+            Share insights, discuss rating guidelines, and celebrate verified payout milestones.
+          </p>
+        </div>
+
+        <button 
+          onclick="alert('Start a new discussion: Type your post in the comment box below!')" 
+          class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-2 self-start cursor-pointer"
+        >
+          <span>✍️ New Discussion</span>
+        </button>
+      </div>
+
+      <div class="space-y-4 max-w-4xl mx-auto">
+        <div class="bg-[#12141D] border-2 border-blue-500/40 rounded-3xl p-5 sm:p-6 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-black text-sm flex items-center justify-center">
+                ★
+              </div>
+              <div>
+                <div class="text-xs font-bold text-white flex items-center gap-2">
+                  <span>Academy Academic Desk</span>
+                  <span class="text-[9px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold uppercase">Official Notice</span>
+                </div>
+                <div class="text-[10px] text-slate-500">Pinned announcement</div>
+              </div>
+            </div>
+            <span class="text-xs text-amber-400 font-bold">📌 Pinned</span>
+          </div>
+
+          <div class="text-xs sm:text-sm text-slate-200 leading-relaxed space-y-2">
+            <p>
+              🚨 <strong>Important Update:</strong> All courses are active! Complete Ads Profits Module 1 to receive your $20 PayPal bonus, check out the 12 Code of Prosperity videos, and download the 2 official PDF guides in Recover Your Investment!
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-[#232738] flex items-center justify-between text-xs text-slate-400">
+            <span class="text-blue-400 font-bold">💬 42 comments</span>
+            <span>❤️ 158 members found this helpful</span>
+          </div>
+        </div>
+
+        <div class="bg-[#12141D] border border-[#232738] rounded-3xl p-5 sm:p-6 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-black text-sm flex items-center justify-center">
+                DM
+              </div>
+              <div>
+                <div class="text-xs font-bold text-white flex items-center gap-2">
+                  <span>David Miller</span>
+                  <span class="text-[9px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.2 rounded font-bold">Verified Member</span>
+                </div>
+                <div class="text-[10px] text-slate-500">4 hours ago</div>
+              </div>
+            </div>
+            <span class="text-xs text-emerald-400 font-bold">💰 $145 Payout Verified</span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            First milestone unlocked! Just got my first $145 payout processed via PayPal from video tasks. Method 1 in Recover Your Investment works as advertised!
+          </p>
+
+          <div class="p-3 bg-[#0E1017] rounded-xl border border-[#232738] flex items-center justify-between text-xs">
+            <span class="text-slate-400">Transaction: <strong class="text-white">PayPal Payout</strong></span>
+            <span class="text-emerald-400 font-mono font-bold">+$145.00 USD</span>
+          </div>
+
+          <div class="pt-2 flex items-center gap-4 text-xs text-slate-400">
+            <button onclick="alert('Liked post!')" class="hover:text-blue-400 cursor-pointer">👍 38 Likes</button>
+            <button onclick="alert('Viewing 9 replies')" class="hover:text-white cursor-pointer">💬 9 Replies</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW E: USD EARNINGS CALCULATOR -->
+    <!-- ========================================== -->
+    <section id="viewCalculator" class="hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto bg-[#12141D] border border-[#232738] rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+        <div class="text-center space-y-2">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            💵 Financial Modeling
+          </div>
+          <h2 class="text-2xl font-black text-white font-display">USD Earnings & Payout Calculator</h2>
+          <p class="text-xs text-slate-400">
+            Estimate your monthly income based on dedicated hours and target evaluation accuracy across approved platforms.
+          </p>
+        </div>
+
+        <div class="space-y-5 bg-[#0E1017] border border-[#232738] rounded-2xl p-5">
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-300">Dedicated Hours per Week:</span>
+              <span id="hoursValText" class="text-blue-400 font-mono text-sm">15 hrs / week</span>
+            </div>
+            <input 
+              type="range" 
+              id="calcHours" 
+              min="5" 
+              max="40" 
+              value="15" 
+              step="1" 
+              oninput="calculateEarnings()"
+              class="w-full accent-blue-500 cursor-pointer"
+            >
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>5 hrs (Part-time)</span>
+              <span>20 hrs</span>
+              <span>40 hrs (Full-time)</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-slate-300">Evaluator Tier & Task Batch:</label>
+            <select 
+              id="calcTier" 
+              onchange="calculateEarnings()" 
+              class="w-full bg-[#12141D] border border-[#232738] rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-blue-500 cursor-pointer"
+            >
+              <option value="16">Junior Evaluator ($14 - $18 / hr) — Entry Level</option>
+              <option value="22" selected>Certified Rater ($19 - $24 / hr) — Standard Batch</option>
+              <option value="28">Senior Quality Auditor ($25 - $32 / hr) — Priority Access</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-[#0E1017] border border-[#232738] rounded-2xl p-4 text-center space-y-1">
+            <div class="text-[11px] font-bold text-slate-400 uppercase">Weekly Projected</div>
+            <div id="weeklyOutput" class="text-xl sm:text-2xl font-black text-white font-mono">$330.00</div>
+            <div class="text-[10px] text-slate-500">Disbursed bi-weekly</div>
+          </div>
+
+          <div class="bg-gradient-to-tr from-emerald-950/40 to-[#0E1017] border border-emerald-500/30 rounded-2xl p-4 text-center space-y-1">
+            <div class="text-[11px] font-bold text-emerald-400 uppercase">Monthly Projected</div>
+            <div id="monthlyOutput" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono">$1,320.00</div>
+            <div class="text-[10px] text-slate-400">Direct via PayPal / Wise</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW F: OFFICIAL CERTIFICATE OF COMPLETION -->
+    <!-- ========================================== -->
+    <section id="viewCertificate" class="hidden space-y-6">
+      
+      <div class="max-w-3xl mx-auto bg-[#12141D] border border-[#232738] rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl text-center">
+        <div>
+          <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Verified Academic Credential
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-display mt-2">Official Certificate of Completion</h2>
+          <p class="text-xs text-slate-400">Official digital credential issued upon completing training modules.</p>
+        </div>
+
+        <div class="relative bg-[#07080B] border-4 border-[#232738] rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl overflow-hidden">
+          <div class="absolute top-4 left-4 text-2xl text-blue-500/20">⚜️</div>
+          <div class="absolute top-4 right-4 text-2xl text-blue-500/20">⚜️</div>
+          <div class="absolute bottom-4 left-4 text-2xl text-blue-500/20">⚜️</div>
+          <div class="absolute bottom-4 right-4 text-2xl text-blue-500/20">⚜️</div>
+
+          <img src="fb-logo.png" alt="Logo" class="mx-auto w-16 h-16 rounded-full object-contain shadow-lg">
+
+          <div class="space-y-1">
+            <div class="text-xs font-bold uppercase tracking-widest text-slate-400">Certificate of Qualification</div>
+            <h3 class="text-xl sm:text-2xl font-black text-white font-display">AD EVALUATOR PRO Academy</h3>
+          </div>
+
+          <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">
+            This certifies that the member registered under
+          </p>
+
+          <div id="certStudentName" class="text-base sm:text-xl font-black text-emerald-400 font-mono py-1 border-b border-[#232738] max-w-md mx-auto truncate">
+            member@vip.com
+          </div>
+
+          <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">
+            has successfully fulfilled all curriculum requirements for <strong class="text-white">Ad Evaluation, Video Creative Quality Assessment & Ads Profits</strong>.
+          </p>
+
+          <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-[#232738] text-[11px] text-slate-400">
+            <div>Issue Date: <strong class="text-white">October 2026</strong></div>
+            <div>Credential ID: <strong class="text-emerald-400 font-mono">CERT-2026-FBR984</strong></div>
+            <div>Status: <strong class="text-emerald-400">✓ Verified</strong></div>
+          </div>
+        </div>
+
+        <button 
+          onclick="alert('Downloading Certificate: CERT-2026-FBR984.pdf\n\nYour official PDF credential is being generated.')" 
+          class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition cursor-pointer"
+        >
+          📥 Download Certificate (PDF)
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================== -->
+  <!-- 5. VIP CONCIERGE SUPPORT MODAL -->
+  <!-- ========================================== -->
+  <div id="supportModal" class="hidden fixed inset-0 z-[80] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#12141D] border border-[#232738] rounded-3xl w-full max-w-md p-6 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-[#232738]">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">💬</span>
+          <h3 class="text-sm font-black text-white font-display">VIP Concierge Support</h3>
+        </div>
+        <button onclick="toggleSupportModal(false)" class="text-slate-400 hover:text-white cursor-pointer">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Submit your inquiry below or email <strong class="text-blue-400">newtrapboostsupport@gmail.com</strong>. We respond in under 2 business hours.
+      </p>
+
+      <form onsubmit="event.preventDefault(); handleSupportSubmit();" class="space-y-3 text-xs">
+        <div class="space-y-1">
+          <label class="font-bold text-slate-300">Subject:</label>
+          <select class="w-full bg-[#0E1017] border border-[#232738] rounded-xl p-2.5 text-white outline-none">
+            <option>Ads Profits App & Setup</option>
+            <option>Module 1 Form & $20 PayPal Bonus</option>
+            <option>Recover Your Investment Methods</option>
+            <option>General Support Inquiry</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label class="font-bold text-slate-300">Message:</label>
+          <textarea rows="3" required placeholder="Describe your question or issue in detail..." class="w-full bg-[#0E1017] border border-[#232738] rounded-xl p-2.5 text-white placeholder-slate-600 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-[#1877F2] hover:bg-[#1464cc] text-white font-extrabold py-3 rounded-xl transition cursor-pointer">
+          Submit Priority Ticket
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 6. THREE-STEP REFUND AUDIT MODAL -->
+  <!-- ========================================== -->
+  <div id="refundModal" class="hidden fixed inset-0 z-[95] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#12141D] border border-[#232738] rounded-3xl w-full max-w-xl p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto scrollbar-mk">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#232738]">
+        <div class="flex items-center gap-2.5">
+          <span class="text-xl text-amber-400">⚖️</span>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-white font-display">Official Cancellation & Refund Audit Process</h3>
+            <span class="text-[10px] text-slate-400">30-Day Satisfaction Protocol</span>
+          </div>
+        </div>
+        <button onclick="closeRefundAuditModal()" class="text-slate-400 hover:text-white cursor-pointer">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+        <p>
+          We fully honor our 30-day satisfaction guarantee. To protect the integrity of the program and comply with payment gateway compliance standards, all requests undergo a standard verification audit.
+        </p>
+
+        <div class="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 space-y-2 text-amber-200">
+          <div class="font-bold flex items-center gap-1.5">
+            <span>⚠️</span>
+            <span>Important considerations before proceeding:</span>
+          </div>
+          <ul class="list-disc list-inside space-y-1 text-[11px] text-amber-300/90">
+            <li><strong>Audit & Review Timeline:</strong> Every cancellation request is audited individually by our compliance desk within <strong>3 to 5 business days</strong>.</li>
+            <li><strong>Immediate License Revocation:</strong> Submitting this audit permanently closes your VIP member license, simulator account, and API keys.</li>
+            <li><strong>Support Assistance Available:</strong> If your issue is technical or related to payout setup, our concierge desk at <strong class="text-white">newtrapboostsupport@gmail.com</strong> can resolve it in under 2 hours without losing your license.</li>
+          </ul>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); handleRefundAuditSubmit();" class="space-y-4 text-xs">
+        <div class="space-y-1.5">
+          <label class="font-bold text-slate-300">Primary Reason for Request:</label>
+          <select required class="w-full bg-[#0E1017] border border-[#232738] rounded-xl p-3 text-white outline-none">
+            <option value="">Select a reason...</option>
+            <option>Technical difficulties with platform or apps</option>
+            <option>Could not configure payout gateway (PayPal / Wise)</option>
+            <option>Lack of personal time to dedicate to tasks</option>
+            <option>Results did not meet personal expectations</option>
+            <option>Other reason</option>
+          </select>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-bold text-slate-300">Provide specific details regarding your request:</label>
+          <textarea rows="3" required placeholder="Please describe what went wrong so our audit team can review your case..." class="w-full bg-[#0E1017] border border-[#232738] rounded-xl p-3 text-white placeholder-slate-600 outline-none"></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1 text-[11px] text-slate-400">
+          <input type="checkbox" required id="auditConfirmCheck" class="accent-blue-500">
+          <label for="auditConfirmCheck">I acknowledge the 3 to 5 business day review SLA and immediate license closure.</label>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+          <button type="submit" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-extrabold py-3.5 rounded-xl transition cursor-pointer">
+            Submit Request for Formal Audit
+          </button>
+          <button type="button" onclick="closeRefundAuditModal()" class="bg-[#171923] hover:bg-[#232738] text-slate-300 font-bold py-3.5 px-6 rounded-xl border border-[#232738] transition cursor-pointer">
+            Return to Member Portal
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 7. FOOTER (CLEAN) -->
+  <!-- ========================================== -->
+  <footer class="bg-[#0B0C10] border-t border-[#232738] py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="fb-logo.png" alt="Logo" class="w-6 h-6 rounded-full opacity-60">
+        <span>© 2026 AD EVALUATOR PRO Academy. All rights reserved.</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-[11px]">
+        <a href="#" onclick="toggleSupportModal(true); return false;" class="hover:text-slate-400">Concierge Desk</a>
+        <span>•</span>
+        <a href="#" onclick="openRefundAuditModal(); return false;" class="hover:text-slate-400">Need a refund? Click here.</a>
+        <span>•</span>
+        <a href="#" onclick="alert('Terms of Service: Standard remote contractor guidelines apply.'); return false;" class="hover:text-slate-400">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================== -->
+  <!-- 8. JAVASCRIPT CONTROLLERS -->
+  <!-- ========================================== -->
+  <script>
+    const COURSES = {
+  "complete_program": {
+    "id": "complete_program",
+    "title": "Program Complete",
+    "badge": "COURSE 01",
+    "description": "Foundations & Remote Evaluation Setup",
+    "modules": [
+      {
+        "id": "cp_mod1",
+        "badge": "MODULE 01",
+        "title": "Module 1 - Foundations & Wallet Setup",
+        "icon": "\ud83c\udfdb\ufe0f",
+        "lessons": [
+          {
+            "id": "cp_l1",
+            "title": "1. Overview of AD EVALUATOR PRO & Ad Evaluation",
+            "youtubeId": "JACqqG5qB2M",
+            "duration": "14 min",
+            "completed": true,
+            "description": "Learn how Big Tech platforms employ independent remote evaluators to assess sponsored creatives, video campaigns, and recommendation feeds.",
+            "checkpoints": [
+              "Understand the role of human quality raters.",
+              "Review confidentiality policies.",
+              "Identify ad quality score metrics."
+            ]
+          },
+          {
+            "id": "cp_l2",
+            "title": "2. Payout Gateway Configuration (PayPal & Wise)",
+            "youtubeId": "w8jnbryJOb8",
+            "duration": "14 min",
+            "completed": true,
+            "description": "Configure your international payment processors to receive direct USD payouts with zero hidden conversion fees.",
+            "checkpoints": [
+              "Link a verified PayPal or Wise multi-currency account.",
+              "Configure direct automated deposits.",
+              "Verify tax reporting guidelines."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "fb_profits": {
+    "id": "fb_profits",
+    "title": "Ads Profits",
+    "badge": "COURSE 02",
+    "description": "The Complete Video Blueprint",
+    "modules": [
+      {
+        "id": "fbp_mod1",
+        "badge": "MODULE 01",
+        "title": "Module 1 - First Steps",
+        "icon": "\ud83d\udcdd",
+        "lessons": [
+          {
+            "id": "fbp_l1",
+            "title": "Fill out this form and earn $35",
+            "youtubeId": "y4rZWUg2BBc",
+            "duration": "8 min",
+            "completed": true,
+            "hasForm": true,
+            "description": "Welcome to module 1.1, where we invite you to fill out this short form. We recommend you fill out this form when you finish consuming the program, so you can give us your opinion of its content.<br><br>After filling out the form we will personally send you $20 dollars to your PayPal account... but be patient, as the money will arrive in the next 4-6 days.",
+            "checkpoints": [
+              "Watch the introductory briefing.",
+              "Complete the program first.",
+              "Submit the form to claim your $20 PayPal bonus."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod2",
+        "badge": "MODULE 02",
+        "title": "Module 2 - Download The Ads Profits App",
+        "icon": "\ud83d\udcf2",
+        "lessons": [
+          {
+            "id": "fbp_l2",
+            "title": "Download The Ads Profits App",
+            "youtubeId": "65XtsHL9KCM",
+            "duration": "10 min",
+            "completed": false,
+            "description": "Walkthrough on how to download, configure, and install the Ads Profits application and mobile extensions directly on your device.",
+            "checkpoints": [
+              "Download the installation package.",
+              "Configure task notifications.",
+              "Link your member profile."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod3",
+        "badge": "MODULE 03",
+        "title": "Module 3 - Earn $200 - $300 Daily Watching Videos",
+        "icon": "\ud83d\udcb5",
+        "lessons": [
+          {
+            "id": "fbp_l3",
+            "title": "Daily Video Rating Strategy - Part 1",
+            "youtubeId": "j4-1Kw_kuWk",
+            "duration": "12 min",
+            "completed": false,
+            "description": "Part 1 of the daily video rating strategy for $200-$300 daily benchmarks.",
+            "checkpoints": [
+              "Implement rating workflow.",
+              "Maintain high scoring accuracy."
+            ]
+          },
+          {
+            "id": "fbp_l4",
+            "title": "Optimizing Your Daily Payouts - Part 2",
+            "youtubeId": "sNkzTkH6JKc",
+            "duration": "11 min",
+            "completed": false,
+            "description": "Part 2: Payout optimization techniques.",
+            "checkpoints": [
+              "Daily task quotas.",
+              "Tracking consistency index."
+            ]
+          },
+          {
+            "id": "fbp_l5",
+            "title": "High-Yield Creative Evaluation - Part 3",
+            "youtubeId": "QhxaSXzZSCk",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Part 3: Scoring high-yield video creatives.",
+            "checkpoints": [
+              "Commercial intent signals.",
+              "Avoiding deduction penalties."
+            ]
+          },
+          {
+            "id": "fbp_l6",
+            "title": "Scaling Daily Video Targets - Part 4",
+            "youtubeId": "vdhquT6SQdY",
+            "duration": "13 min",
+            "completed": false,
+            "description": "Part 4: Reaching peak daily volume safely.",
+            "checkpoints": [
+              "Speed optimization.",
+              "Multi-window management."
+            ]
+          },
+          {
+            "id": "fbp_l7",
+            "title": "Accelerating $200 - $300 Milestones - Part 5",
+            "youtubeId": "28IjJXTfXSA",
+            "duration": "15 min",
+            "completed": false,
+            "description": "Part 5: Milestone acceleration and reward cashing.",
+            "checkpoints": [
+              "Final rating calibrations.",
+              "Weekly withdrawal routine."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod4",
+        "badge": "MODULE 04",
+        "title": "Module 4 - Earn $3,500 Each Month With Ads Profits",
+        "icon": "\ud83d\udcb0",
+        "lessons": [
+          {
+            "id": "fbp_l8",
+            "title": "Monthly Income Blueprint - Session 1",
+            "youtubeId": "JaOL7IxZPRA",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Session 1 of the $3,500/month roadmap.",
+            "checkpoints": [
+              "Establish focus hours.",
+              "Build non-negotiable habits."
+            ]
+          },
+          {
+            "id": "fbp_l9",
+            "title": "Unlocking Consistent High-Ticket Tasks - Session 2",
+            "youtubeId": "K1Lp_mwbTBI",
+            "duration": "12 min",
+            "completed": false,
+            "description": "Session 2: Qualifying for high-ticket tasks.",
+            "checkpoints": [
+              "Audit pass thresholds.",
+              "Priority queue access."
+            ]
+          },
+          {
+            "id": "fbp_l10",
+            "title": "Daily Consistency Framework ($3,500/Month) - Session 3",
+            "youtubeId": "3VDVXgQIG1Q",
+            "duration": "15 min",
+            "completed": false,
+            "description": "Session 3: 4-week execution schedule.",
+            "checkpoints": [
+              "Task scheduling.",
+              "Error minimization."
+            ]
+          },
+          {
+            "id": "fbp_l11",
+            "title": "Monthly Cashout and Account Maintenance - Session 4",
+            "youtubeId": "jXexJY0JS3k",
+            "duration": "11 min",
+            "completed": false,
+            "description": "Session 4: Cashout protocol and account preservation.",
+            "checkpoints": [
+              "PayPal/Wise automated deposits.",
+              "Contractor compliance."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod5",
+        "badge": "MODULE 05",
+        "title": "Module 5 - Multiply Your Results With These 3 Secret Methods",
+        "icon": "\u26a1",
+        "lessons": [
+          {
+            "id": "fbp_l12",
+            "title": "Secret Method 1: Task Stacking & Multi-Tabs",
+            "youtubeId": "KlahnDqamxI",
+            "duration": "12 min",
+            "completed": false,
+            "description": "Secret Method 1: Parallel task stacking safely.",
+            "checkpoints": [
+              "Multi-tab evaluation rules.",
+              "Browser profile separation."
+            ]
+          },
+          {
+            "id": "fbp_l13",
+            "title": "Secret Method 2: High-Value Task Filtering",
+            "youtubeId": "h0doY96U1OQ",
+            "duration": "10 min",
+            "completed": false,
+            "description": "Secret Method 2: High-yield task filter rules.",
+            "checkpoints": [
+              "Filtering low-yield batches.",
+              "Focusing on top payouts."
+            ]
+          },
+          {
+            "id": "fbp_l14",
+            "title": "Secret Method 3: Weekly Multiplier System",
+            "youtubeId": "rkrTRUYiLWk",
+            "duration": "13 min",
+            "completed": false,
+            "description": "Secret Method 3: Weekly multiplier compound routine.",
+            "checkpoints": [
+              "Compound task earnings.",
+              "Weekly volume bonuses."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod6",
+        "badge": "MODULE 06",
+        "title": "Module 6 - Exclusive Bonus",
+        "icon": "\ud83c\udf81",
+        "lessons": [
+          {
+            "id": "fbp_l15",
+            "title": "VIP Bonus Masterclass 1",
+            "youtubeId": "fFELeulDI4s",
+            "duration": "16 min",
+            "completed": false,
+            "description": "Bonus Masterclass 1: Advanced contractor strategies.",
+            "checkpoints": [
+              "Advanced task navigation.",
+              "Case study breakdown."
+            ]
+          },
+          {
+            "id": "fbp_l16",
+            "title": "VIP Bonus Masterclass 2",
+            "youtubeId": "qZ9xUZKJnmQ",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Bonus Masterclass 2: Automation techniques.",
+            "checkpoints": [
+              "Workflow automation.",
+              "Efficiency gains."
+            ]
+          },
+          {
+            "id": "fbp_l17",
+            "title": "VIP Bonus Masterclass 3",
+            "youtubeId": "5z4wOMDdTdU",
+            "duration": "15 min",
+            "completed": false,
+            "description": "Bonus Masterclass 3: Long-term platform equity.",
+            "checkpoints": [
+              "Long-term standing.",
+              "Premium auditor tiers."
+            ]
+          },
+          {
+            "id": "fbp_l18",
+            "title": "VIP Bonus Masterclass 4",
+            "youtubeId": "SnssN3rM4rk",
+            "duration": "18 min",
+            "completed": false,
+            "description": "Bonus Masterclass 4: Monetization scale masterclass.",
+            "checkpoints": [
+              "Scaling beyond standard hours.",
+              "Tax & corporate structure."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fbp_mod7",
+        "badge": "MODULE 07",
+        "title": "Module 7 - Support Center",
+        "icon": "\ud83c\udfa7",
+        "lessons": [
+          {
+            "id": "fbp_l19",
+            "title": "Official Ads Profits Support Center",
+            "youtubeId": "",
+            "duration": "Support Desk",
+            "completed": false,
+            "isSupport": true,
+            "supportEmail": "private.tubedigital@gmail.com",
+            "description": "Dear Ads Profits Users,<br><br>Welcome to the Ads Profits Support Center! We're dedicated to ensuring your experience with Ads Profits is seamless. Whether you have questions, encounter technical issues, or seek guidance on maximizing features, our team is here to assist you.<br><br><b>How to Reach Us:</b> For inquiries, assistance, or feedback, please contact us via email at <a href='mailto:private.tubedigital@gmail.com' class='text-blue-400 font-bold underline'>private.tubedigital@gmail.com</a>. Our support team operates Monday to Friday, from 9:00 AM to 6:00 PM, and we aim to respond promptly to all inquiries during these hours.<br><br><b>Feedback:</b> Your input is invaluable to us as we strive to enhance Ads Profits continuously. Whether it's suggestions for new features or improvements to existing ones, we'd love to hear from you. Please feel free to share your thoughts and ideas with us.<br><br>Thank you for choosing Ads Profits. We value your trust and look forward to assisting you.<br><br><b>Best Regards,<br>Ads Profits Support Team</b>",
+            "checkpoints": [
+              "Email support at private.tubedigital@gmail.com.",
+              "Hours: Monday to Friday, 9:00 AM to 6:00 PM.",
+              "Prompt response within 2 hours."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mindset": {
+    "id": "mindset",
+    "title": "Millionaire Mindset: The Code of Prosperity",
+    "badge": "COURSE 03",
+    "description": "The perfect mindset for those who want to achieve prosperity (12 Contents)",
+    "modules": [
+      {
+        "id": "mm_mod1",
+        "badge": "MODULE 01",
+        "title": "Module 1 - The Code of Prosperity",
+        "icon": "\ud83e\udde0",
+        "lessons": [
+          {
+            "id": "mm_l1",
+            "title": "The Code of Prosperity - Part 1",
+            "youtubeId": "RyGZ8H4N0t4",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Master the initial prosperity frequency and eliminate scarcity thinking.",
+            "checkpoints": [
+              "Scarcity vs abundance.",
+              "Action bias."
+            ]
+          },
+          {
+            "id": "mm_l2",
+            "title": "Cultivating Daily Optimism - Part 2",
+            "youtubeId": "o0I_J1vHlAU",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Why optimism directly impacts cognitive execution and task performance.",
+            "checkpoints": [
+              "Expectation psychology.",
+              "Re-framing obstacles."
+            ]
+          },
+          {
+            "id": "mm_l3",
+            "title": "Self-Motivation & Inner Drive - Part 3",
+            "youtubeId": "tFJqac-zzuw",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Building sustainable internal motivation that does not fade after week 1.",
+            "checkpoints": [
+              "Internal locus of control.",
+              "Daily momentum."
+            ]
+          },
+          {
+            "id": "mm_l4",
+            "title": "Purpose Orientation & Goal Compliance - Part 4",
+            "youtubeId": "NfKMzS8v-Rg",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "You conquer what you define you are going to conquer. Setting exact daily targets.",
+            "checkpoints": [
+              "Target clarity.",
+              "Micro-goals."
+            ]
+          },
+          {
+            "id": "mm_l5",
+            "title": "Extreme Self-Responsibility - Part 5",
+            "youtubeId": "0WtHJIez0V0",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "We can and must create the reality of the world around us. Zero excuses.",
+            "checkpoints": [
+              "Radical accountability.",
+              "Problem solving."
+            ]
+          },
+          {
+            "id": "mm_l6",
+            "title": "Unbreakable Self-Discipline - Part 6",
+            "youtubeId": "cV218GPI2ak",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Habits start out as harmless thoughts and become unbreakable ropes.",
+            "checkpoints": [
+              "Habit compounding.",
+              "30-day discipline."
+            ]
+          },
+          {
+            "id": "mm_l7",
+            "title": "Breaking Scarcity Traps - Part 7",
+            "youtubeId": "w0w2rZDmXAQ",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Overcoming the psychological pitfalls that keep 95% of people broke.",
+            "checkpoints": [
+              "Scarcity traps.",
+              "Abundance shift."
+            ]
+          },
+          {
+            "id": "mm_l8",
+            "title": "The Winner's Mental Toughness - Part 8",
+            "youtubeId": "kj4efPjk7T0",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Developing mental toughness during challenging tasks and platform audits.",
+            "checkpoints": [
+              "Stress management.",
+              "Emotional resilience."
+            ]
+          },
+          {
+            "id": "mm_l9",
+            "title": "Focus & Environmental Control - Part 9",
+            "youtubeId": "BIQZqQIsPY4",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "Protecting your prime focus hours and curating your digital workspace.",
+            "checkpoints": [
+              "Eliminating distractions.",
+              "Deep work routine."
+            ]
+          },
+          {
+            "id": "mm_l10",
+            "title": "Compounding Small Habits - Part 10",
+            "youtubeId": "2cSo99Rlz_Y",
+            "duration": "Shorts",
+            "completed": false,
+            "description": "How 15 minutes of disciplined daily task completion compounds into thousands of dollars.",
+            "checkpoints": [
+              "The compound effect.",
+              "Daily logging."
+            ]
+          },
+          {
+            "id": "mm_l11",
+            "title": "The Millionaire Mindset Masterclass - Part 11",
+            "youtubeId": "BJKc1zF-nac",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Comprehensive masterclass on financial identity, vision, and long-term execution.",
+            "checkpoints": [
+              "Financial identity shift.",
+              "Scale philosophy."
+            ]
+          },
+          {
+            "id": "mm_l12",
+            "title": "Sustaining Prosperity & Financial Vision - Part 12",
+            "youtubeId": "zKA-9Ok1fWU",
+            "duration": "16 min",
+            "completed": false,
+            "description": "How to retain, invest, and multiply the money you generate online without losing momentum.",
+            "checkpoints": [
+              "Wealth retention.",
+              "Long-term prosperity."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "recover_investment": {
+    "id": "recover_investment",
+    "title": "Recover Your Investment",
+    "badge": "COURSE 04",
+    "description": "Recover your investment in 72 hours (7 Contents)",
+    "modules": [
+      {
+        "id": "ri_mod1",
+        "badge": "MODULE 01",
+        "title": "Module 1 - Introduction",
+        "icon": "\ud83d\udccb",
+        "lessons": [
+          {
+            "id": "ri_l1",
+            "title": "Introduction & Fast Start Blueprint",
+            "youtubeId": "",
+            "duration": "Reading",
+            "completed": true,
+            "description": "\n<div class=\"space-y-4 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border border-[#232738] rounded-3xl p-6 sm:p-8\">\n  <div class=\"flex items-center gap-3 pb-3 border-b border-[#232738]\">\n    <span class=\"text-2xl\">\ud83d\udccb</span>\n    <h3 class=\"text-base font-bold text-white\">Introduction to Recover Your Investment</h3>\n  </div>\n  <p>Hello and welcome to the first module of this wonderful course where you will learn to multiply your results X3. In order for you to see the expected results please follow the instructions below:</p>\n  <div class=\"space-y-2 pt-2\">\n    <div class=\"flex items-start gap-3 bg-[#12141D] p-3 rounded-xl border border-[#232738]\">\n      <span class=\"w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 text-xs\">1</span>\n      <div><strong>Don't see the course in disorder:</strong> Follow each step chronologically to ensure no critical setup is skipped.</div>\n    </div>\n    <div class=\"flex items-start gap-3 bg-[#12141D] p-3 rounded-xl border border-[#232738]\">\n      <span class=\"w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 text-xs\">2</span>\n      <div><strong>Set the right mindset:</strong> Review the mindset framework in the previous course to cultivate operational focus.</div>\n    </div>\n    <div class=\"flex items-start gap-3 bg-[#12141D] p-3 rounded-xl border border-[#232738]\">\n      <span class=\"w-6 h-6 rounded-full bg-emerald-600/20 text-emerald-400 font-bold flex items-center justify-center flex-shrink-0 text-xs\">3</span>\n      <div><strong>Claim your $20 Bonus:</strong> Make sure you have completed the Google Form in Ads Profits Module 1 to receive your $20 PayPal bonus.</div>\n    </div>\n    <div class=\"flex items-start gap-3 bg-[#12141D] p-3 rounded-xl border border-[#232738]\">\n      <span class=\"w-6 h-6 rounded-full bg-purple-600/20 text-purple-400 font-bold flex items-center justify-center flex-shrink-0 text-xs\">4</span>\n      <div><strong>Execute the 3 Methods:</strong> Check Module 4 below and follow the exact video steps to recover your investment and increase your results X3.</div>\n    </div>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Read the 4 sequential instructions.",
+              "Maintain chronological order.",
+              "Prepare for the 3 ROI recovery methods."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ri_mod2",
+        "badge": "MODULE 02",
+        "title": "Module 2 - Support",
+        "icon": "\ud83c\udfa7",
+        "lessons": [
+          {
+            "id": "ri_l2",
+            "title": "Student Support & Inquiries",
+            "youtubeId": "",
+            "duration": "Support Desk",
+            "completed": false,
+            "description": "\n<div class=\"space-y-4 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border border-[#232738] rounded-3xl p-6 sm:p-8\">\n  <div class=\"flex items-center gap-3 pb-3 border-b border-[#232738]\">\n    <span class=\"text-2xl\">\ud83c\udfa7</span>\n    <h3 class=\"text-base font-bold text-white\">Welcome to the Support Area</h3>\n  </div>\n  <p>For us it is extremely important that each of you feel satisfied with the content presented, so if you have any concerns about any topic, please do not hesitate to communicate your request in this email.</p>\n  <p class=\"text-slate-400\">We will take 2 - 3 days to respond due to the high number of students, so we ask for a little patience:</p>\n  <div class=\"p-4 bg-[#12141D] border border-blue-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3\">\n    <div>\n      <div class=\"text-xs font-bold text-white\">Direct Student Care Email:</div>\n      <div class=\"text-sm font-mono text-blue-400 font-bold\">newtrapboostsupport@gmail.com</div>\n    </div>\n    <a href=\"mailto:newtrapboostsupport@gmail.com\" class=\"bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-2\">\n      <span>\u2709\ufe0f Send Email</span>\n    </a>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Dedicated support email: newtrapboostsupport@gmail.com.",
+              "Response window: 2-3 business days.",
+              "Provide complete order details for fastest resolution."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ri_mod3",
+        "badge": "MODULE 03",
+        "title": "Module 3 - PDF Guides & Materials",
+        "icon": "\ud83d\udcc4",
+        "lessons": [
+          {
+            "id": "ri_l3",
+            "title": "The Real Secret of Millionaires (PDF Guide)",
+            "youtubeId": "",
+            "duration": "E-Book",
+            "completed": false,
+            "pdfUrl": "downloads/The_Secret_of_Millionaires.pdf",
+            "description": "\n<div class=\"space-y-4 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border border-[#232738] rounded-3xl p-6 sm:p-8\">\n  <div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#232738]\">\n    <div>\n      <h3 class=\"text-lg font-black text-white font-display\">The Real Secret of Millionaires</h3>\n      <p class=\"text-xs text-slate-400\">Official companion e-book on psychological frameworks and wealth disciplines.</p>\n    </div>\n    <a href=\"downloads/The_Secret_of_Millionaires.pdf\" download class=\"bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-5 py-3 rounded-xl shadow-lg transition flex items-center gap-2 self-start sm:self-auto cursor-pointer\">\n      <span>\ud83d\udce5 Download PDF E-Book</span>\n    </a>\n  </div>\n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-xs\">\n    <div class=\"bg-[#12141D] border border-[#232738] p-3 rounded-xl\">\n      <strong class=\"text-blue-400\">1. Optimism:</strong> Expecting success conditions the body and mind to conquer demanding objectives.\n    </div>\n    <div class=\"bg-[#12141D] border border-[#232738] p-3 rounded-xl\">\n      <strong class=\"text-emerald-400\">2. Self Motivation:</strong> Insisting on desires and the rewards of success rather than limitations.\n    </div>\n    <div class=\"bg-[#12141D] border border-[#232738] p-3 rounded-xl\">\n      <strong class=\"text-purple-400\">3. Purpose Orientation:</strong> You conquer what you define that you are going to conquer.\n    </div>\n    <div class=\"bg-[#12141D] border border-[#232738] p-3 rounded-xl\">\n      <strong class=\"text-amber-400\">4. Self Discipline:</strong> Habits start as spiderwebs and become unbreakable ropes with practice.\n    </div>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Download the official PDF e-book.",
+              "Read the 5 core mental disciplines.",
+              "Apply the optimism framework to your daily routine."
+            ]
+          },
+          {
+            "id": "ri_l4",
+            "title": "15 Best Sources Of Income (PDF Guide)",
+            "youtubeId": "",
+            "duration": "E-Book",
+            "completed": false,
+            "pdfUrl": "downloads/15_Best_Sources_Of_Income.pdf",
+            "description": "\n<div class=\"space-y-4 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border border-[#232738] rounded-3xl p-6 sm:p-8\">\n  <div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#232738]\">\n    <div>\n      <h3 class=\"text-lg font-black text-white font-display\">15 Best Sources Of Income</h3>\n      <p class=\"text-xs text-slate-400\">Complete 26-page guide to remote monetization and digital income streams.</p>\n    </div>\n    <a href=\"downloads/15_Best_Sources_Of_Income.pdf\" download class=\"bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-5 py-3 rounded-xl shadow-lg transition flex items-center gap-2 self-start sm:self-auto cursor-pointer\">\n      <span>\ud83d\udce5 Download 26-Page PDF</span>\n    </a>\n  </div>\n  <div class=\"space-y-2 text-xs text-slate-300\">\n    <p>This comprehensive guide covers 15 proven digital revenue models you can operate from anywhere in the world:</p>\n    <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 font-mono text-[11px]\">\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">1. Resale of Imported Products</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">2. Affiliate Marketing</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">3. Systems Programming</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">4. Digital Consulting</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">5. Virtual Online Store</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">6. Modern Dropshipping</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">7. Professional Copywriting</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">8. App & Website Testing</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">9. Text & Media Translation</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">10. Paid Ads Management</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">11. Content Blogs & Sites</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">12. Tax Return Preparation</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">13. Scalable Infoproducts</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">14. Micro-App Development</div>\n      <div class=\"p-2 bg-[#12141D] rounded-lg border border-[#232738]\">15. Private Virtual Lessons</div>\n    </div>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Download the 26-page monetization guide.",
+              "Select 1 to 2 complementary income sources.",
+              "Integrate with your daily evaluation schedule."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ri_mod4",
+        "badge": "MODULE 04",
+        "title": "Module 4 - Methods to Recover Your Investment",
+        "icon": "\ud83d\udcb5",
+        "lessons": [
+          {
+            "id": "ri_l5",
+            "title": "Method 1 to recover your investment | Make $509 easily (Part 1)",
+            "youtubeId": "p8B4meVI154",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Part 1 of Method 1: The step-by-step procedure to generate your first $509 easily and completely recoup your program cost.",
+            "checkpoints": [
+              "Follow the exact platform onboarding steps.",
+              "Set up your initial payout request.",
+              "Execute your first task batch."
+            ]
+          },
+          {
+            "id": "ri_l6",
+            "title": "Method 1 to recover your investment | Make $509 easily (Part 2)",
+            "youtubeId": "L4_pAXDg6Y0",
+            "duration": "12 min",
+            "completed": false,
+            "description": "Part 2 of Method 1: Scaling and solidifying your $509 recovery with rapid verification.",
+            "checkpoints": [
+              "Verify transaction processing.",
+              "Review bonus qualifications.",
+              "Ensure zero penalty deductions."
+            ]
+          },
+          {
+            "id": "ri_l7",
+            "title": "Method 2 to recover your investment | Make $1,437 per week",
+            "youtubeId": "okIz98bcBo0",
+            "duration": "15 min",
+            "completed": false,
+            "description": "Method 2: Scaling to $1,437 per week using prioritized evaluation campaigns.",
+            "checkpoints": [
+              "Access high-volume weekly pools.",
+              "Optimize hourly task speed.",
+              "Schedule weekly PayPal disbursements."
+            ]
+          },
+          {
+            "id": "ri_l8",
+            "title": "Method 3 $100 Every Day With UserTesting.com",
+            "youtubeId": "434puZCzFwM",
+            "duration": "16 min",
+            "completed": false,
+            "description": "Method 3: How to earn $100 every single day testing digital products and websites on UserTesting.com.",
+            "checkpoints": [
+              "Pass the UserTesting practice test.",
+              "Set up immediate screen recording approvals.",
+              "Cash out $10 to $60 per completed test directly to PayPal."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "increase_profits_x3": {
+    "id": "increase_profits_x3",
+    "title": "Increase Your Profits X3",
+    "badge": "COURSE 05",
+    "description": "Advanced 3X earnings multiplier and account activation.",
+    "modules": [
+      {
+        "id": "ip_mod1",
+        "badge": "MODULE 01",
+        "title": "Millionaire Mindset To Earn Money",
+        "icon": "\ud83e\udde0",
+        "lessons": [
+          {
+            "id": "ip_l1",
+            "title": "1. Mindset Fundamentals",
+            "youtubeId": "Nkly4teYytU",
+            "duration": "12 min",
+            "completed": false,
+            "description": "Foundations of the millionaire mindset. Discover how top earners establish psychological anchors and daily routines to scale and multiply their daily income.",
+            "checkpoints": [
+              "Eliminate psychological ceilings on daily earnings.",
+              "Establish clear monetary targets.",
+              "Adopt high-performance daily habits."
+            ]
+          },
+          {
+            "id": "ip_l2",
+            "title": "2. Motivation & Energy Drive",
+            "youtubeId": "rYwLtw3q9iw",
+            "duration": "10 min",
+            "completed": false,
+            "description": "Unlocking deep emotional drive and maintaining non-negotiable motivation to execute daily revenue tasks consistently without burnout.",
+            "checkpoints": [
+              "Identify your core financial motivators.",
+              "Structure productive focus sessions.",
+              "Maintain peak energy through work hours."
+            ]
+          },
+          {
+            "id": "ip_l3",
+            "title": "3. Mindset Expansion & Focus",
+            "youtubeId": "kCgV-i7Brhg",
+            "duration": "14 min",
+            "completed": false,
+            "description": "Advanced mental expansion techniques. Cultivate laser focus on high-yield opportunities while filtering out low-return distractions.",
+            "checkpoints": [
+              "Focus on tasks with 3X multiplier potential.",
+              "Overcome hesitation when scaling task volume.",
+              "Build unshakeable confidence in financial freedom."
+            ]
+          },
+          {
+            "id": "ip_l4",
+            "title": "4. Rev Audio Transcription Method",
+            "youtubeId": "m0knrEuyeVM",
+            "duration": "15 min",
+            "completed": false,
+            "description": "Comprehensive tutorial on leveraging Rev.com for audio transcription and captioning tasks to generate steady, reliable online earnings daily.",
+            "checkpoints": [
+              "Sign up and complete Rev contractor evaluation.",
+              "Master transcription shortcuts to double your output speed.",
+              "Cash out weekly earnings directly to PayPal."
+            ]
+          },
+          {
+            "id": "ip_l5",
+            "title": "5. Clickworker Micro-Task Method",
+            "youtubeId": "1_NRwFi_2u4",
+            "duration": "13 min",
+            "completed": false,
+            "description": "Step-by-step walkthrough of Clickworker and UHRS platform jobs. Learn how to qualify for premium micro-tasks and scale your earnings seamlessly.",
+            "checkpoints": [
+              "Create and verify your Clickworker contractor profile.",
+              "Pass UHRS qualification tests for priority task access.",
+              "Execute task batches efficiently to maximize hourly rate."
+            ]
+          },
+          {
+            "id": "ip_l6",
+            "title": "6. Consistent Execution & Scaling",
+            "youtubeId": "rYwLtw3q9iw",
+            "duration": "11 min",
+            "completed": false,
+            "description": "Synthesizing mindset and monetization methods into a bulletproof daily execution routine that compounds your income week after week.",
+            "checkpoints": [
+              "Combine Rev, Clickworker, and Ad evaluation into a daily schedule.",
+              "Track compound earnings on your contractor dashboard.",
+              "Achieve the 3X multiplication benchmark."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ip_mod2",
+        "badge": "MODULE 02",
+        "title": "Increase your results X3",
+        "icon": "\ud83d\ude80",
+        "lessons": [
+          {
+            "id": "ip_l7",
+            "title": "Increase your results X3 - Account Activation",
+            "youtubeId": "",
+            "duration": "Activation Form",
+            "completed": false,
+            "hasActivationForm": true,
+            "activationUrl": "https://forms.gle/u9iSccBcrw1xCcQx8?_gl=1*1dy0g4o*_ga*OTk3MDc4MjY2LjE2ODYxOTkxMzY.*_ga_37GXT4VGQK*MTcxNjEwNTU4NS4yMC4xLjE3MTYxMDU2MTMuMC4wLjA.",
+            "description": "\n<div class=\"space-y-6 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border-2 border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl\">\n  <div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#232738]\">\n    <div>\n      <div class=\"inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2\">\n        <span class=\"w-2 h-2 rounded-full bg-emerald-400 animate-pulse\"></span>\n        Account Multiplier Activation\n      </div>\n      <h3 class=\"text-xl sm:text-2xl font-black text-white font-display\">Increase your results X3</h3>\n      <p class=\"text-xs text-slate-400 mt-1\">Request The Activation of your account and receive earning multiplied X3.</p>\n    </div>\n    <a href=\"https://forms.gle/u9iSccBcrw1xCcQx8?_gl=1*1dy0g4o*_ga*OTk3MDc4MjY2LjE2ODYxOTkxMzY.*_ga_37GXT4VGQK*MTcxNjEwNTU4NS4yMC4xLjE3MTYxMDU2MTMuMC4wLjA.\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold text-xs px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 transition transform hover:scale-[1.02] flex items-center gap-2 self-start sm:self-auto cursor-pointer whitespace-nowrap\">\n      <span>\ud83d\ude80 Request The Activation</span>\n      <span>\u2192</span>\n    </a>\n  </div>\n\n  <div class=\"p-5 bg-[#12141D] border border-[#232738] rounded-2xl space-y-3\">\n    <h4 class=\"text-sm font-bold text-white flex items-center gap-2\">\n      <span>\ud83d\udcdd Request Instructions:</span>\n    </h4>\n    <p class=\"text-slate-300 leading-relaxed\">\n      Request The Activation of your account and receive earning multiplied X3 in the following link:\n    </p>\n    <div class=\"p-3 bg-[#090A0F] rounded-xl border border-blue-500/30 font-mono text-xs text-blue-400 break-all select-all flex items-center justify-between gap-3\">\n      <span>https://forms.gle/u9iSccBcrw1xCcQx8</span>\n      <a href=\"https://forms.gle/u9iSccBcrw1xCcQx8?_gl=1*1dy0g4o*_ga*OTk3MDc4MjY2LjE2ODYxOTkxMzY.*_ga_37GXT4VGQK*MTcxNjEwNTU4NS4yMC4xLjE3MTYxMDU2MTMuMC4wLjA.\" target=\"_blank\" class=\"px-3 py-1 bg-blue-600 text-white font-sans font-bold text-[11px] rounded hover:bg-blue-500 transition whitespace-nowrap\">\n        Open Form \u2197\n      </a>\n    </div>\n  </div>\n\n  <div class=\"grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-xs\">\n    <div class=\"p-3 bg-[#12141D] rounded-xl border border-[#232738]\">\n      <strong class=\"text-blue-400 block mb-1\">Step 1: Open Link</strong>\n      Access the Google Form link above.\n    </div>\n    <div class=\"p-3 bg-[#12141D] rounded-xl border border-[#232738]\">\n      <strong class=\"text-emerald-400 block mb-1\">Step 2: Submit Details</strong>\n      Fill out your registered checkout email.\n    </div>\n    <div class=\"p-3 bg-[#12141D] rounded-xl border border-[#232738]\">\n      <strong class=\"text-purple-400 block mb-1\">Step 3: Multiplier Active</strong>\n      Enjoy multiplied earnings X3 on daily tasks!\n    </div>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Click the official activation link.",
+              "Fill in your registered email in the Google Form.",
+              "Wait for confirmation of account activation."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lifetime_access": {
+    "id": "lifetime_access",
+    "title": "Lifetime Access",
+    "badge": "COURSE 06",
+    "description": "Official Lifetime Access Certificate & Monthly Updates",
+    "modules": [
+      {
+        "id": "la_mod1",
+        "badge": "MODULE 01",
+        "title": "Lifetime Access & Monthly Updates",
+        "icon": "\ud83c\udf1f",
+        "lessons": [
+          {
+            "id": "la_l1",
+            "title": "Lifetime Access Notice",
+            "youtubeId": "",
+            "duration": "VIP Notice",
+            "completed": true,
+            "description": "\n<div class=\"space-y-6 text-xs sm:text-sm text-slate-200 leading-relaxed bg-[#0E1017] border-2 border-purple-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl\">\n  <div class=\"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#232738]\">\n    <div>\n      <div class=\"inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider mb-2\">\n        <span class=\"w-2 h-2 rounded-full bg-purple-400 animate-pulse\"></span>\n        Permanent VIP Access Activated\n      </div>\n      <h3 class=\"text-xl sm:text-3xl font-black text-white font-display\">Lifetime Access</h3>\n      <p class=\"text-xs text-slate-400 mt-1\">Official activation announcement and continuous monthly updates schedule.</p>\n    </div>\n    <div class=\"px-4 py-2 rounded-xl bg-purple-600/20 border border-purple-500/40 text-purple-300 font-mono text-xs font-bold\">\n      PROFITUP LIFETIME PASS\n    </div>\n  </div>\n\n  <div class=\"p-6 bg-gradient-to-br from-[#1877F2]/10 via-[#12141D] to-purple-900/20 rounded-2xl border border-purple-500/30 space-y-4\">\n    <div class=\"flex items-start gap-4\">\n      <div class=\"w-12 h-12 rounded-2xl bg-purple-600/30 border border-purple-500/50 flex items-center justify-center text-2xl flex-shrink-0\">\n        \ud83c\udfc6\n      </div>\n      <div class=\"space-y-2\">\n        <h4 class=\"text-base sm:text-lg font-bold text-white\">Official Welcome Notice:</h4>\n        <p class=\"text-slate-100 leading-relaxed text-sm sm:text-base font-medium\">\n          Congratulations, you now have your lifetime access to ProfitUp activated with the email you purchased. Enjoy a lifetime of services from our ProfitUp platform and make a lot of money.\n        </p>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"p-5 bg-[#12141D] border border-blue-500/30 rounded-2xl space-y-3\">\n    <div class=\"flex items-center gap-2 text-blue-400 font-bold text-sm\">\n      <span>\ud83d\udd04</span>\n      <span>Monthly Updates & New Online Extra Income Chances Guaranteed</span>\n    </div>\n    <p class=\"text-slate-300 leading-relaxed text-xs\">\n      Every single month, our engineering and research team uploads fresh curriculum updates, new high-paying online revenue strategies, updated algorithmic guidelines, and verified opportunities to make extra income online directly into your account \u2014 completely free of charge.\n    </p>\n    <div class=\"grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs\">\n      <div class=\"p-3 bg-[#090A0F] rounded-xl border border-[#232738] flex items-center gap-3\">\n        <span class=\"text-xl\">\ud83d\udcc5</span>\n        <div>\n          <strong class=\"text-white block\">Monthly Curriculum Updates:</strong>\n          <span class=\"text-slate-400\">New video lessons and platform tutorials uploaded each month.</span>\n        </div>\n      </div>\n      <div class=\"p-3 bg-[#090A0F] rounded-xl border border-[#232738] flex items-center gap-3\">\n        <span class=\"text-xl\">\ud83d\udcb0</span>\n        <div>\n          <strong class=\"text-white block\">New Extra Income Chances:</strong>\n          <span class=\"text-slate-400\">Priority access to new tested micro-task programs and payout systems.</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n",
+            "checkpoints": [
+              "Lifetime access verified with your checkout email.",
+              "Enjoy perpetual services and tools from ProfitUp.",
+              "Check back each month for new extra income opportunities."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+    const SHELVES = [
+  {
+    "id": "c1",
+    "courseKey": "complete_program",
+    "shelf": "Complete Program",
+    "badge": "COURSE 01",
+    "title": "Program Complete",
+    "cardSubtitle": "Foundations & Setup",
+    "icon": "\ud83d\udccb",
+    "tag": "100% SUCCESS RATE",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-blue-600/30 to-cyan-500/10",
+    "borderColor": "border-cyan-500/40",
+    "glowColor": "shadow-cyan-500/20",
+    "lessonsCount": 2
+  },
+  {
+    "id": "c2",
+    "courseKey": "fb_profits",
+    "shelf": "Complete Program",
+    "badge": "COURSE 02",
+    "title": "Ads Profits",
+    "cardSubtitle": "7 Modules \u00b7 19 Lessons",
+    "icon": "\ud83d\udcb0",
+    "tag": "ACTIVE & VERIFIED",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-blue-600/40 via-indigo-600/30 to-cyan-500/10",
+    "borderColor": "border-blue-500/50",
+    "glowColor": "shadow-blue-500/30",
+    "lessonsCount": 19
+  },
+  {
+    "id": "c3",
+    "courseKey": "mindset",
+    "shelf": "Complete Program",
+    "badge": "COURSE 03",
+    "title": "Millionaire Mindset: The Code of Prosperity",
+    "cardSubtitle": "12 Video Lessons",
+    "icon": "\ud83e\udde0",
+    "tag": "MINDSET & HABITS",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-cyan-600/30 to-blue-500/10",
+    "borderColor": "border-blue-500/40",
+    "glowColor": "shadow-blue-500/20",
+    "lessonsCount": 12
+  },
+  {
+    "id": "c4",
+    "courseKey": "recover_investment",
+    "shelf": "Complete Program",
+    "badge": "COURSE 04",
+    "title": "Recover Your Investment",
+    "cardSubtitle": "4 Modules \u00b7 2 PDFs \u00b7 4 Videos",
+    "icon": "\u23f1\ufe0f",
+    "tag": "FAST 72H ROI",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-emerald-600/30 to-green-500/10",
+    "borderColor": "border-emerald-500/40",
+    "glowColor": "shadow-emerald-500/20",
+    "lessonsCount": 8
+  },
+  {
+    "id": "c5",
+    "courseKey": "increase_profits_x3",
+    "shelf": "Complete Program",
+    "badge": "COURSE 05",
+    "title": "Increase Your Profits X3",
+    "cardSubtitle": "Increase Your Profits",
+    "icon": "\u26a1",
+    "tag": "MULTIPLY INCOME",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-amber-600/30 to-yellow-500/10",
+    "borderColor": "border-amber-500/40",
+    "glowColor": "shadow-amber-500/20",
+    "lessonsCount": 7
+  },
+  {
+    "id": "c6",
+    "courseKey": "lifetime_access",
+    "shelf": "Complete Program",
+    "badge": "COURSE 06",
+    "title": "Lifetime Access",
+    "cardSubtitle": "ProfitUp Vault \u00b7 Monthly Updates",
+    "icon": "\ud83c\udf1f",
+    "tag": "VIP MEMBER PASS",
+    "shelfBadge": "Complet Program",
+    "neonGradient": "from-purple-600/30 to-indigo-500/10",
+    "borderColor": "border-purple-500/40",
+    "glowColor": "shadow-purple-500/20",
+    "lessonsCount": 1
+  },
+  {
+    "id": "c7",
+    "courseKey": "recover_investment",
+    "shelf": "Welcome and Support",
+    "badge": "SUPPORT",
+    "title": "Support Center",
+    "cardSubtitle": "newtrapboostsupport@gmail.com",
+    "icon": "\ud83c\udfa7",
+    "tag": "STUDENT SUPPORT",
+    "shelfBadge": "Support",
+    "neonGradient": "from-blue-600/30 to-indigo-500/10",
+    "borderColor": "border-blue-500/40",
+    "glowColor": "shadow-blue-500/20",
+    "lessonsCount": 1
+  },
+  {
+    "id": "c8",
+    "courseKey": "simulator",
+    "shelf": "Secret Tools",
+    "badge": "TOOLS",
+    "title": "Secret Tools Sandbox",
+    "cardSubtitle": "Live Assessment Tool",
+    "icon": "\ud83d\udcbc",
+    "tag": "PROPRIETARY TOOL",
+    "shelfBadge": "Sandbox",
+    "neonGradient": "from-indigo-600/30 to-purple-500/10",
+    "borderColor": "border-indigo-500/40",
+    "glowColor": "shadow-indigo-500/20",
+    "lessonsCount": 1
+  }
+];
+
+    let activeCourseId = 'fb_profits';
+    let currentLessonId = 'fbp_l1';
+    let currentUserEmail = localStorage.getItem('ad_evaluator_pro_user_email') || localStorage.getItem('facebook_rewards_user_email') || '';
+    let openModuleIds = ['fbp_mod1', 'fbp_mod2', 'fbp_mod3', 'mm_mod1', 'ri_mod1', 'ip_mod1', 'ip_mod2', 'la_mod1'];
+
+    // INIT
+    window.addEventListener('DOMContentLoaded', () => {
+      checkLoginStatus();
+      renderShelves();
+      renderCurriculumAccordion();
+      renderCurrentLesson();
+      calculateEarnings();
+
+      const welcomed = localStorage.getItem('ad_evaluator_pro_welcomed') || localStorage.getItem('facebook_rewards_welcomed');
+      if (currentUserEmail && !welcomed) {
+        showWelcomeModal();
+      }
+    });
+
+    // 1. LOGIN / AUTH SIMULATION
+    function checkLoginStatus() {
+      const loginOverlay = document.getElementById('loginScreen');
+      if (currentUserEmail) {
+        loginOverlay.classList.add('hidden');
+        updateUserEmailUI(currentUserEmail);
+      } else {
+        loginOverlay.classList.remove('hidden');
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('userEmailInput');
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      const btn = document.getElementById('loginBtn');
+      const loading = document.getElementById('loginLoadingState');
+      const loadingText = document.getElementById('loginLoadingText');
+      const progressBar = document.getElementById('loginProgressBar');
+
+      btn.classList.add('hidden');
+      loading.classList.remove('hidden');
+
+      loadingText.textContent = "Verifying secure purchase records...";
+      progressBar.style.width = "35%";
+
+      setTimeout(() => {
+        loadingText.textContent = "Validating token & VIP license key...";
+        progressBar.style.width = "75%";
+      }, 900);
+
+      setTimeout(() => {
+        loadingText.textContent = "License confirmed! Opening your member portal...";
+        progressBar.style.width = "100%";
+      }, 1800);
+
+      setTimeout(() => {
+        currentUserEmail = email;
+        localStorage.setItem('ad_evaluator_pro_user_email', email);
+        localStorage.setItem('facebook_rewards_user_email', email);
+        updateUserEmailUI(email);
+        document.getElementById('loginScreen').classList.add('hidden');
+        showWelcomeModal();
+      }, 2400);
+    }
+
+    function updateUserEmailUI(email) {
+      document.getElementById('userEmailDisplay').textContent = email;
+      document.getElementById('dropdownEmail').textContent = email;
+      document.getElementById('certStudentName').textContent = email;
+      document.getElementById('userAvatarLetter').textContent = email.charAt(0).toUpperCase();
+    }
+
+    function logoutUser() {
+      if (confirm("Are you sure you want to sign out and switch email?")) {
+        localStorage.removeItem('ad_evaluator_pro_user_email');
+        localStorage.removeItem('facebook_rewards_user_email');
+        localStorage.removeItem('ad_evaluator_pro_welcomed');
+        localStorage.removeItem('facebook_rewards_welcomed');
+        location.reload();
+      }
+    }
+
+    // 2. WELCOME POPUP & CONFETTI
+    function showWelcomeModal() {
+      const modal = document.getElementById('welcomeModal');
+      modal.classList.remove('hidden');
+      celebrateConfetti();
+    }
+
+    function closeWelcomeModal() {
+      document.getElementById('welcomeModal').classList.add('hidden');
+      localStorage.setItem('ad_evaluator_pro_welcomed', 'true');
+      localStorage.setItem('facebook_rewards_welcomed', 'true');
+      celebrateConfetti();
+    }
+
+    function celebrateConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    // 3. NAVIGATION & VIEW SWITCHING
+    function showView(viewName) {
+      const views = ['dashboard', 'classroom', 'simulator', 'community', 'calculator', 'certificate'];
+      views.forEach(v => {
+        const el = document.getElementById('view' + capitalize(v));
+        if (el) {
+          if (v === viewName) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      views.forEach(v => {
+        const navBtn = document.getElementById('nav' + capitalize(v));
+        if (navBtn) {
+          if (v === viewName) {
+            navBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#171923] border border-[#232738] transition cursor-pointer";
+          } else {
+            navBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#171923] transition cursor-pointer";
+          }
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    // 4. RENDER DASHBOARD SHELVES
+    function renderShelves() {
+      const shelf1El = document.getElementById('shelfCompleteProgram');
+      const completeProgMods = SHELVES.filter(m => m.shelf === 'Complete Program');
+      shelf1El.innerHTML = completeProgMods.map(m => createShelfCardHtml(m)).join('');
+
+      const shelf2El = document.getElementById('shelfWelcomeSupport');
+      const welcomeMods = SHELVES.filter(m => m.shelf === 'Welcome and Support');
+      shelf2El.innerHTML = welcomeMods.map(m => createShelfCardHtml(m)).join('');
+
+      const shelf3El = document.getElementById('shelfSecretTools');
+      const toolMods = SHELVES.filter(m => m.shelf === 'Secret Tools');
+      shelf3El.innerHTML = toolMods.map(m => createShelfCardHtml(m)).join('');
+    }
+
+    function createShelfCardHtml(m) {
+      return `
+        <div 
+          onclick="handleShelfCardClick('${m.id}')"
+          class="bg-[#12141D] hover:bg-[#171923] border border-[#232738] hover:${m.borderColor} rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col shadow-lg cursor-pointer transform hover:-translate-y-1 hover:${m.glowColor}"
+        >
+          <div class="relative aspect-[3/4] bg-gradient-to-b ${m.neonGradient} p-3 sm:p-4 flex flex-col justify-between overflow-hidden">
+            <div class="flex items-center justify-between text-[9px] font-black uppercase tracking-wider">
+              <span class="px-2 py-0.5 rounded-full bg-black/60 text-white border border-white/10 backdrop-blur-md">
+                ${m.badge}
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-black/60 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                ${m.lessonsCount} ${m.lessonsCount === 1 ? 'Content' : 'Contents'}
+              </span>
+            </div>
+
+            <div class="my-auto text-center space-y-2 py-2">
+              <div class="mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition duration-300">
+                ${m.icon}
+              </div>
+              <div class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-white/90 drop-shadow line-clamp-2 px-1">
+                ${m.title}
+              </div>
+              <div class="text-[8px] font-bold text-slate-400 uppercase tracking-widest px-1.5 py-0.5 rounded bg-black/40 inline-block">
+                ${m.tag}
+              </div>
+            </div>
+
+            <div class="w-full space-y-1">
+              <div class="flex justify-between text-[9px] font-bold text-slate-400">
+                <span>Access Course</span>
+                <span class="text-blue-400 font-bold">Open →</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-[#12141D] flex-1 flex flex-col justify-between space-y-1.5 border-t border-[#232738]">
+            <div>
+              <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-blue-400 transition line-clamp-1">
+                ${m.title}
+              </h3>
+              <p class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
+                ${m.cardSubtitle}
+              </p>
+            </div>
+
+            <div class="pt-2">
+              <div class="flex items-center justify-between text-[11px]">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-slate-300 font-medium">${m.lessonsCount} ${m.lessonsCount === 1 ? 'content' : 'contents'}</span>
+                  <span class="text-[#FF3B30] font-bold ml-1">${m.shelfBadge || 'Complet Program'}</span>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">0%</span>
+              </div>
+              <div class="w-full bg-[#1e2230] h-1.5 rounded-full overflow-hidden mt-1.5">
+                <div class="bg-[#FF3B30] h-full w-[0%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function handleShelfCardClick(shelfId) {
+      const card = SHELVES.find(c => c.id === shelfId);
+      if (!card) return;
+
+      if (card.courseKey === 'simulator') {
+        showView('simulator');
+      } else {
+        openCourseInClassroom(card.courseKey);
+      }
+    }
+
+    function openCourseInClassroom(courseKey, specificLessonId) {
+      switchCourse(courseKey);
+      if (specificLessonId) {
+        loadLessonById(specificLessonId);
+      }
+      showView('classroom');
+    }
+
+    // 5. CLASSROOM CONTROLLER & COURSE SWITCHING
+    function switchCourse(courseId) {
+      if (!COURSES[courseId]) return;
+      activeCourseId = courseId;
+      document.getElementById('courseSelector').value = courseId;
+      document.getElementById('sidebarCourseBadge').textContent = COURSES[courseId].badge;
+
+      // Select first lesson of first module in this course
+      const firstMod = COURSES[courseId].modules[0];
+      const firstLesson = firstMod.lessons[0];
+      currentLessonId = firstLesson.id;
+
+      if (!openModuleIds.includes(firstMod.id)) {
+        openModuleIds.push(firstMod.id);
+      }
+
+      renderCurriculumAccordion();
+      renderCurrentLesson();
+    }
+
+    function getFlatLessonsOfCurrentCourse() {
+      const course = COURSES[activeCourseId];
+      if (!course) return [];
+      const flat = [];
+      course.modules.forEach(m => {
+        m.lessons.forEach(l => flat.push({ ...l, moduleTitle: m.title, moduleBadge: m.badge }));
+      });
+      return flat;
+    }
+
+    function getCurrentLessonObject() {
+      const flat = getFlatLessonsOfCurrentCourse();
+      return flat.find(l => l.id === currentLessonId) || flat[0];
+    }
+
+    function loadLessonById(lessonId) {
+      currentLessonId = lessonId;
+      renderCurrentLesson();
+      renderCurriculumAccordion();
+    }
+
+    function renderCurrentLesson() {
+      const l = getCurrentLessonObject();
+      if (!l) return;
+
+      const playerContainer = document.getElementById('playerContainer');
+
+      if (l.youtubeId && l.youtubeId.trim() !== '') {
+        // YouTube Embed (Supports watch & shorts)
+        playerContainer.innerHTML = `
+          <iframe 
+            id="youtubePlayerIframe"
+            class="w-full h-full border-0 rounded-2xl shadow-2xl" 
+            src="https://www.youtube-nocookie.com/embed/${l.youtubeId}?autoplay=1&rel=0&modestbranding=1" 
+            title="${l.title}" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+          ></iframe>
+        `;
+      } else if (l.hasActivationForm) {
+        // Google Form Activation Card
+        playerContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col items-center justify-center p-6 sm:p-10 text-center space-y-5 bg-gradient-to-tr from-emerald-950/40 via-[#07080B] to-green-950/40 rounded-2xl border border-emerald-500/30">
+            <div class="w-16 h-16 rounded-full bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-3xl shadow-xl animate-bounce">
+              🚀
+            </div>
+            <div class="space-y-2 max-w-lg">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                3X Earnings Multiplier Active
+              </div>
+              <div class="text-xl sm:text-2xl font-black text-white font-display">Increase your results X3</div>
+              <p class="text-xs sm:text-sm text-slate-300">Request The Activation of your account and receive earning multiplied X3.</p>
+            </div>
+            <a href="${l.activationUrl}" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold text-xs sm:text-sm px-8 py-3.5 rounded-xl shadow-xl shadow-emerald-500/25 transition transform hover:scale-105 flex items-center gap-2 cursor-pointer">
+              <span>🚀 Request The Activation (Google Forms)</span>
+              <span>→</span>
+            </a>
+          </div>
+        `;
+      } else if (activeCourseId === 'lifetime_access') {
+        // VIP Lifetime Access Banner Display
+        playerContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col items-center justify-center p-6 sm:p-10 text-center space-y-5 bg-gradient-to-tr from-purple-950/40 via-[#07080B] to-indigo-950/40 rounded-2xl border border-purple-500/40">
+            <div class="w-16 h-16 rounded-full bg-purple-600/20 text-purple-300 border border-purple-500/40 flex items-center justify-center text-3xl shadow-xl">
+              🏆
+            </div>
+            <div class="space-y-2 max-w-xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-bold uppercase tracking-wider">
+                VIP Lifetime License Verified
+              </div>
+              <div class="text-xl sm:text-3xl font-black text-white font-display">Lifetime Access — ProfitUp</div>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Congratulations, you now have your lifetime access to ProfitUp activated with the email you purchased. Enjoy a lifetime of services from our ProfitUp platform and make a lot of money.
+              </p>
+              <div class="pt-2 text-xs text-purple-300 font-semibold">
+                🔄 Monthly platform updates & new extra income chances guaranteed!
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (l.pdfUrl) {
+        // PDF Companion Reader Display
+        playerContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-4 bg-gradient-to-tr from-blue-950/40 via-[#07080B] to-emerald-950/40 rounded-2xl border border-[#232738]">
+            <div class="w-16 h-16 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-3xl shadow-xl">
+              📘
+            </div>
+            <div class="space-y-1">
+              <div class="text-base sm:text-lg font-black text-white font-display">${l.title}</div>
+              <p class="text-xs text-slate-400 max-w-md">Official Companion E-Book · Click below to download your permanent PDF copy.</p>
+            </div>
+            <a href="${l.pdfUrl}" download class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg transition flex items-center gap-2">
+              <span>📥 Download Official PDF E-Book</span>
+            </a>
+          </div>
+        `;
+      } else {
+        // Custom text / letter display (Support Center or Intro)
+        playerContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-4 bg-gradient-to-tr from-blue-950/40 via-[#07080B] to-indigo-950/40 rounded-2xl border border-[#232738]">
+            <div class="w-16 h-16 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-3xl shadow-xl">
+              🎧
+            </div>
+            <div class="space-y-1">
+              <div class="text-base sm:text-lg font-black text-white font-display">${l.title}</div>
+              <p class="text-xs text-slate-400 max-w-md">Student Support Care & Operational Guidance</p>
+            </div>
+            <a href="mailto:newtrapboostsupport@gmail.com" class="bg-[#1877F2] hover:bg-[#1464cc] text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg transition flex items-center gap-2">
+              <span>✉️ Contact: newtrapboostsupport@gmail.com</span>
+            </a>
+          </div>
+        `;
+      }
+
+      document.getElementById('lessonBreadcrumb').textContent = COURSES[activeCourseId].title + " · " + l.moduleTitle;
+      document.getElementById('lessonTitle').textContent = l.title;
+      document.getElementById('lessonDescription').innerHTML = `<div>${l.description}</div>`;
+
+      const cpEl = document.getElementById('lessonCheckpoints');
+      cpEl.innerHTML = l.checkpoints.map(c => `
+        <li class="flex items-start gap-2">
+          <span class="text-blue-400 font-bold">•</span>
+          <span>${c}</span>
+        </li>
+      `).join('');
+
+      // Completion Button UI
+      const btn = document.getElementById('completeLessonBtn');
+      const icon = document.getElementById('completeCheckIcon');
+      const text = document.getElementById('completeBtnText');
+      if (l.completed) {
+        btn.className = "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2 self-start sm:self-auto cursor-pointer";
+        icon.textContent = "✓";
+        text.textContent = "Completed";
+      } else {
+        btn.className = "bg-[#171923] hover:bg-[#232738] text-slate-300 border border-[#232738] font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2 self-start sm:self-auto cursor-pointer";
+        icon.textContent = "⚪";
+        text.textContent = "Mark as Completed";
+      }
+
+      // Prev / Next button state
+      const flat = getFlatLessonsOfCurrentCourse();
+      const currentIdx = flat.findIndex(x => x.id === currentLessonId);
+      document.getElementById('prevLessonBtn').disabled = (currentIdx <= 0);
+      document.getElementById('nextLessonBtn').disabled = (currentIdx >= flat.length - 1);
+
+      updateOverallProgress();
+    }
+
+    function toggleCurrentLessonCompletion() {
+      const flat = getFlatLessonsOfCurrentCourse();
+      const l = flat.find(x => x.id === currentLessonId);
+      if (l) {
+        l.completed = !l.completed;
+        // Also update in COURSES source
+        COURSES[activeCourseId].modules.forEach(m => {
+          const target = m.lessons.find(x => x.id === currentLessonId);
+          if (target) target.completed = l.completed;
+        });
+        renderCurrentLesson();
+        renderCurriculumAccordion();
+        if (l.completed) {
+          celebrateConfetti();
+        }
+      }
+    }
+
+    function navigateLesson(dir) {
+      const flat = getFlatLessonsOfCurrentCourse();
+      const currentIdx = flat.findIndex(x => x.id === currentLessonId);
+      const targetIdx = currentIdx + dir;
+      if (targetIdx >= 0 && targetIdx < flat.length) {
+        loadLessonById(flat[targetIdx].id);
+      }
+    }
+
+    function toggleModuleAccordion(moduleId) {
+      if (openModuleIds.includes(moduleId)) {
+        openModuleIds = openModuleIds.filter(id => id !== moduleId);
+      } else {
+        openModuleIds.push(moduleId);
+      }
+      renderCurriculumAccordion();
+    }
+
+    function renderCurriculumAccordion() {
+      const container = document.getElementById('curriculumAccordion');
+      const course = COURSES[activeCourseId];
+      if (!course) return;
+
+      container.innerHTML = course.modules.map(m => {
+        const isOpen = openModuleIds.includes(m.id);
+        const completedCount = m.lessons.filter(l => l.completed).length;
+
+        return `
+          <div class="border border-[#232738] rounded-2xl overflow-hidden bg-[#0E1017]">
+            <button 
+              onclick="toggleModuleAccordion('${m.id}')"
+              class="w-full p-3.5 flex items-center justify-between text-left hover:bg-[#171923] transition cursor-pointer"
+            >
+              <div class="flex items-center gap-2.5 truncate">
+                <span class="text-sm">${m.icon}</span>
+                <div class="truncate">
+                  <div class="text-[10px] uppercase font-bold text-blue-400">${m.badge}</div>
+                  <div class="text-xs font-bold text-white truncate">${m.title}</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0 text-slate-400 text-xs">
+                <span class="text-[10px] font-mono">${completedCount}/${m.lessons.length}</span>
+                <span class="transform transition duration-200 ${isOpen ? 'rotate-180' : ''}">▼</span>
+              </div>
+            </button>
+
+            <div class="${isOpen ? 'block' : 'hidden'} p-2 space-y-1 border-t border-[#232738] bg-[#0B0C10]">
+              ${m.lessons.map(l => {
+                const isActive = (l.id === currentLessonId);
+                return `
+                  <div 
+                    onclick="loadLessonById('${l.id}')"
+                    class="p-2.5 rounded-xl border transition cursor-pointer flex items-center justify-between gap-2.5 ${
+                      isActive 
+                        ? 'bg-blue-600/15 border-blue-500/50 text-white font-bold' 
+                        : 'bg-[#12141D] border-transparent hover:border-[#232738] text-slate-400 hover:text-white'
+                    }"
+                  >
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-xs ${l.completed ? 'text-emerald-400 font-bold' : (isActive ? 'text-blue-400' : 'text-slate-600')}">
+                        ${l.completed ? '✓' : (l.youtubeId ? '▶' : (l.pdfUrl ? '📄' : '🎧'))}
+                      </span>
+                      <span class="text-xs truncate ${isActive ? 'text-white' : 'text-slate-300'}">${l.title}</span>
+                    </div>
+                    <span class="text-[9px] font-mono text-slate-500 flex-shrink-0">${l.duration}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateOverallProgress();
+    }
+
+    function updateOverallProgress() {
+      const flat = getFlatLessonsOfCurrentCourse();
+      const completedCount = flat.filter(l => l.completed).length;
+      const pct = flat.length > 0 ? Math.round((completedCount / flat.length) * 100) : 0;
+
+      document.getElementById('headerProgressPct').textContent = pct + "% Done";
+      document.getElementById('headerProgressCountBadge').textContent = completedCount + "/" + flat.length;
+      document.getElementById('sidebarProgressCount').textContent = completedCount + " of " + flat.length + " lessons completed";
+      document.getElementById('sidebarProgressPct').textContent = pct + "%";
+    }
+
+    // 6. LESSON TABS & COMMENTS
+    function switchLessonTab(tab) {
+      const tabs = ['overview', 'materials', 'comments'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtn' + capitalize(t));
+        const content = document.getElementById('tabContent' + capitalize(t));
+        if (t === tab) {
+          btn.className = "pb-3 border-b-2 border-blue-500 text-white transition cursor-pointer";
+          content.classList.remove('hidden');
+        } else {
+          btn.className = "pb-3 border-b-2 border-transparent text-slate-400 hover:text-white transition cursor-pointer";
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    function rateLesson(stars) {
+      document.getElementById('ratingFeedback').textContent = `(${stars}.0 · Thank you for your feedback!)`;
+      document.getElementById('ratingFeedback').classList.add('text-emerald-400');
+    }
+
+    function submitComment() {
+      const textarea = document.getElementById('newCommentText');
+      const val = textarea.value.trim();
+      if (!val) {
+        alert("Please write a question or comment first.");
+        return;
+      }
+
+      const list = document.getElementById('commentsList');
+      const newComment = document.createElement('div');
+      newComment.className = "bg-[#0E1017] border border-blue-500/30 rounded-2xl p-4 space-y-2 animate-pulse";
+      newComment.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+              ${(currentUserEmail ? currentUserEmail.charAt(0).toUpperCase() : 'ME')}
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white flex items-center gap-1.5">
+                ${currentUserEmail || 'You'}
+                <span class="text-[9px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-1.5 py-0.2 rounded font-bold">New Comment</span>
+              </div>
+              <div class="text-[10px] text-slate-500">Just now</div>
+            </div>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-bold">✓ Submitted</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed pl-9">${val}</p>
+      `;
+
+      list.insertBefore(newComment, list.firstChild);
+      textarea.value = '';
+      setTimeout(() => newComment.classList.remove('animate-pulse'), 1000);
+    }
+
+    // 7. USER DROPDOWN & MODALS
+    function toggleUserDropdown() {
+      document.getElementById('userDropdown').classList.toggle('hidden');
+    }
+
+    function toggleSupportModal(show) {
+      const modal = document.getElementById('supportModal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function handleSupportSubmit() {
+      alert("✓ Priority Ticket Submitted!\n\nYour case #FBR-" + Math.floor(100000 + Math.random() * 900000) + " has been assigned to our tutor desk at newtrapboostsupport@gmail.com. We will respond in under 2 hours.");
+      toggleSupportModal(false);
+    }
+
+    function openRefundAuditModal() {
+      document.getElementById('refundModal').classList.remove('hidden');
+      document.getElementById('userDropdown').classList.add('hidden');
+    }
+
+    function closeRefundAuditModal() {
+      document.getElementById('refundModal').classList.add('hidden');
+    }
+
+    function handleRefundAuditSubmit() {
+      alert("Formal Audit Request Submitted.\n\nYour protocol #AUD-" + Math.floor(100000 + Math.random() * 900000) + " is under standard compliance review. Our audit desk will reach out within 3 to 5 business days with your verification resolution.");
+      closeRefundAuditModal();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleSupportModal(false);
+        closeRefundAuditModal();
+      }
+    });
+
+    // 8. CALCULATOR
+    function calculateEarnings() {
+      const hours = parseInt(document.getElementById('calcHours').value, 10);
+      const rate = parseInt(document.getElementById('calcTier').value, 10);
+
+      document.getElementById('hoursValText').textContent = hours + " hrs / week";
+
+      const weekly = hours * rate;
+      const monthly = weekly * 4;
+
+      document.getElementById('weeklyOutput').textContent = "$" + weekly.toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('monthlyOutput').textContent = "$" + monthly.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    }
+  </script>
+
+</body>
+</html>
